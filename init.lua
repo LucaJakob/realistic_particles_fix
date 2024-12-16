@@ -32,3 +32,4 @@ dofile("mods/realistic_particles_fix/files/entities/projectiles/rocket_tier_2.lu
 dofile("mods/realistic_particles_fix/files/entities/projectiles/rocket.lua")
 dofile("mods/realistic_particles_fix/files/entities/projectiles/rubber_ball.lua")
 dofile("mods/realistic_particles_fix/files/entities/projectiles/spitter_tier_2.lua")
+dofile("mods/realistic_particles_fix/files/entities/projectiles/spitter_tier_3.lua")

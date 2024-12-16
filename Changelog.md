@@ -47,7 +47,8 @@
 - Revert gameplay-changing attributes such as bounces and physics
 ### Large Spitter Bolt
 - Revert gameplay-changing attributes such as damage, lifetime randomness, physics, and explosion destruction
-
+### Giant Spitter Bolt
+- Revert gameplay-changing attributes such as damage, bounces and physics
 
 # Changes
 ### Bubble Spark
