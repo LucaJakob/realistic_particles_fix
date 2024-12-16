@@ -23,3 +23,4 @@ dofile("mods/realistic_particles_fix/files/entities/projectiles/glowing_bolt.lua
 dofile("mods/realistic_particles_fix/files/entities/projectiles/iceball.lua")
 dofile("mods/realistic_particles_fix/files/entities/projectiles/lance.lua")
 dofile("mods/realistic_particles_fix/files/entities/projectiles/laser.lua")
+dofile("mods/realistic_particles_fix/files/entities/projectiles/light_bullet_air.lua")

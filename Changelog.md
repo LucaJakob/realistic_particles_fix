@@ -34,8 +34,9 @@
 - Revert gameplay-changing attributes such as velocity, explosion behaviour and damage
 - Spell now properly uses the freezing functionality
 ### Glowing Lance
-- Revert gameplay-canging attributes such as knockback
-
+- Revert gameplay-changing attributes such as knockback
+### Burst of Air
+- Revert gameplay-changing attributes such as explosion radius and physics
 # Changes
 ### Bubble Spark
 - Replaced red sparks from explosion with blue sparks
@@ -58,3 +59,5 @@
 ### Concentrated Light
 - Modified the trail the projectile leaves behind
 - Trails now fade with time
+### Burst of Air
+- Reduced particles to avoid bright white light when spamming
