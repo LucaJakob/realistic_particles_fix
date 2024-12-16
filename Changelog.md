@@ -37,6 +37,9 @@
 - Revert gameplay-changing attributes such as knockback
 ### Burst of Air
 - Revert gameplay-changing attributes such as explosion radius and physics
+### Pollen
+- Revert gameplay-changing attributes such as spread, bounces, damage, explosion radius and friendly fire
+
 # Changes
 ### Bubble Spark
 - Replaced red sparks from explosion with blue sparks
