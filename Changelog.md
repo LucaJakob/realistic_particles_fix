@@ -47,3 +47,6 @@
 - Replaced red sparks from explosion with (default) orange
 ### Glitter Bomb
 - Replaced orange sparks from fuse with bright purple 
+### Pinpoint of Light
+- Modified the trail the projectile leaves behind
+- Trails now fade with time
