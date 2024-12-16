@@ -33,6 +33,8 @@
 ### Iceball
 - Revert gameplay-changing attributes such as velocity, explosion behaviour and damage
 - Spell now properly uses the freezing functionality
+### Glowing Lance
+- Revert gameplay-canging attributes such as knockback
 
 # Changes
 ### Bubble Spark
