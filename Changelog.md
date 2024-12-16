@@ -1,20 +1,22 @@
 # Fixes
+- Fixed missing tags for all projectiles
+- Fixed audio paths for all projectiles
+
 ### Arrow
 - Revert gameplay-changing attributes such as ragdoll multiplier, knockback and bounces
 ### Black Hole
-- Add missing tags for entity
 - Add missing tag for cell destruction 
 ### Energy Sphere
-- Add missing tags for entity
 - Revert gameplay-changing attributes such as damage, knockback and impulse coefficient
 - Revert audio pointing to different spell
 ### Bubble Spark
-- Add missing tags for entity
 - Revert gameplay-changing attributes such as spread, bounciness and lifetime randomness
 - Revert gameplay-changing explosion power
 ### Magic Bolt
-- Add missing tags for entity
 - Revert gameplay-changing knockback attribute
+### Energy Orb
+- Revert gameplay-changing attributes such as lifetime randomness and knockback
+
 
 # Changes
 
