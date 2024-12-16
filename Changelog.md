@@ -25,6 +25,8 @@
 - Revert gameplay-changing attributes such as explosion power
 ### Flamethrower
 - Revert gameplay-changing attributes such as explosion power and behaviour
+### Bomb
+- Revert gameplay-changing attributes such as explosion power, explosion behaviour and throwing distance
 
 # Changes
 ### Bubble Spark
@@ -38,3 +40,5 @@
 - Reduced amount of particles from 800 -> 400
 ### Fireball
 - Reverted explosion texture to vanilla
+### Bomb
+- Replaced red sparks from explosion with (default) orange
