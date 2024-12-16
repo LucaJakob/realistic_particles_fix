@@ -39,6 +39,8 @@
 - Revert gameplay-changing attributes such as explosion radius and physics
 ### Pollen
 - Revert gameplay-changing attributes such as spread, bounces, damage, explosion radius and friendly fire
+### Magic Missile
+- Revert gameplay-changing attributes such as explosion radius and explosion physics 
 ### Large Magic Missile
 - Fix explosion sprite using outdated sprite
 
@@ -72,3 +74,5 @@
 - Changed the sparks' color on explosion
 ### Meteor
 - Trail now fades with time
+### Magic Missile
+- Reduced explosion particle count from 4000 -> 150
