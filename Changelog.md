@@ -63,3 +63,7 @@
 - Reduced particles to avoid bright white light when spamming
 ### Spark Bolt
 - Added sparks upon impact
+### Lightning Bolt
+- Changed the sparks' color on explosion
+### Meteor
+- Trail now fades with time
