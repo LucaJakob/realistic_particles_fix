@@ -1,0 +1,1 @@
+dofile("mods/realistic_particles_fix/files/entities/projectiles/arrow.lua")
