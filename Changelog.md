@@ -30,6 +30,9 @@
 ### Glitter Bomb
 - Fix particle changes not being applied to shrapnel
 - Fix shrapnel causing intense lag due to excessive particles
+### Iceball
+- Revert gameplay-changing attributes such as velocity, explosion behaviour and damage
+- Spell now properly uses the freezing functionality
 
 # Changes
 ### Bubble Spark
