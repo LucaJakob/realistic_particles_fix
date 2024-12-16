@@ -45,6 +45,9 @@
 - Fix explosion sprite using outdated sprite
 ### Bouncing Burst
 - Revert gameplay-changing attributes such as bounces and physics
+### Large Spitter Bolt
+- Revert gameplay-changing attributes such as damage, lifetime randomness, physics, and explosion destruction
+
 
 # Changes
 ### Bubble Spark
@@ -78,3 +81,5 @@
 - Trail now fades with time
 ### Magic Missile
 - Reduced explosion particle count from 4000 -> 150
+### Large Spitter Bolt
+- Reduced trail particles from ~25 -> ~15
