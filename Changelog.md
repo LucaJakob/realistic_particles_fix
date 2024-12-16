@@ -12,6 +12,9 @@
 - Add missing tags for entity
 - Revert gameplay-changing attributes such as spread, bounciness and lifetime randomness
 - Revert gameplay-changing explosion power
+### Magic Bolt
+- Add missing tags for entity
+- Revert gameplay-changing knockback attribute
 
 # Changes
 
