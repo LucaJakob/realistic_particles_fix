@@ -6,6 +6,8 @@
 - Revert gameplay-changing attributes such as ragdoll multiplier, knockback and bounces
 ### Black Hole
 - Add missing tag for cell destruction 
+### Bomb Cart
+- Revert gameplay-changing attributes such as explosion radius
 ### Energy Sphere
 - Revert gameplay-changing attributes such as damage, knockback and impulse coefficient
 - Revert audio pointing to different spell
@@ -23,8 +25,8 @@
 - Revert gameplay-changing attributes such as explosion power
 ### Flamethrower
 - Revert gameplay-changing attributes such as explosion power and behaviour
-# Changes
 
+# Changes
 ### Bubble Spark
 - Replaced red sparks from explosion with blue sparks
 - Light now lingers for a moment after explosion
