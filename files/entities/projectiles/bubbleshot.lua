@@ -9,5 +9,10 @@ for content in nxml.edit_file("data/entities/projectiles/deck/bubbleshot.xml", M
         :set("light_fade_time", "0.5")
         :set("material_sparks_count_min", "5") -- from "0"
         :set("material_sparks_count_max", "8") -- from "2"
+        -- New additions
+        :set("sparks_enabled", "1")
+        :set("sparks_count_min", "4")
+        :set("sparks_count_max", "8")
+        :set("spark_material", "spark_blue")
     end
 end

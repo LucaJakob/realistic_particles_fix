@@ -16,11 +16,14 @@
 - Revert gameplay-changing knockback attribute
 ### Energy Orb
 - Revert gameplay-changing attributes such as lifetime randomness and knockback
+### Fireball
+- Revert gameplay-changing attributes such as self harm
+- Fix missing material converting component
 
 # Changes
 
 ### Bubble Spark
-- Removed red sparks from explosion
+- Replaced red sparks from explosion with blue sparks
 - Light now lingers for a moment after explosion
 ### Magic Arrow
 - Reverted minor screenshake change for the arrow landing
@@ -28,3 +31,5 @@
 - Reduced amount of particles from 200 -> 100
 ### Death Cross
 - Reduced amount of particles from 800 -> 400
+### Fireball
+- Reverted explosion texture to vanilla
