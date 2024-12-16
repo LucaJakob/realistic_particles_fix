@@ -43,6 +43,8 @@
 - Revert gameplay-changing attributes such as explosion radius and explosion physics 
 ### Large Magic Missile
 - Fix explosion sprite using outdated sprite
+### Bouncing Burst
+- Revert gameplay-changing attributes such as bounces and physics
 
 # Changes
 ### Bubble Spark
