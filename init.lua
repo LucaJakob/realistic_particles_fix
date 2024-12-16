@@ -28,3 +28,4 @@ dofile("mods/realistic_particles_fix/files/entities/projectiles/light_bullet.lua
 dofile("mods/realistic_particles_fix/files/entities/projectiles/lightning.lua")
 dofile("mods/realistic_particles_fix/files/entities/projectiles/meteor.lua")
 dofile("mods/realistic_particles_fix/files/entities/projectiles/pollen.lua")
+dofile("mods/realistic_particles_fix/files/entities/projectiles/rocket_tier_2.lua")

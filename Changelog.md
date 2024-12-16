@@ -39,6 +39,8 @@
 - Revert gameplay-changing attributes such as explosion radius and physics
 ### Pollen
 - Revert gameplay-changing attributes such as spread, bounces, damage, explosion radius and friendly fire
+### Large Magic Missile
+- Fix explosion sprite using outdated sprite
 
 # Changes
 ### Bubble Spark
