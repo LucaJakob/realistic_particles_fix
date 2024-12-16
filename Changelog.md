@@ -20,8 +20,9 @@
 - Revert gameplay-changing attributes such as self harm
 - Fix missing material converting component
 ### Firebomb
-- Fix gameplay-changing attributes such as explosion power
-
+- Revert gameplay-changing attributes such as explosion power
+### Flamethrower
+- Revert gameplay-changing attributes such as explosion power and behaviour
 # Changes
 
 ### Bubble Spark

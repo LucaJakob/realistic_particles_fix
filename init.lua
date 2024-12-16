@@ -11,3 +11,4 @@ dofile("mods/realistic_particles_fix/files/entities/projectiles/death_cross_big.
 dofile("mods/realistic_particles_fix/files/entities/projectiles/death_cross.lua")
 dofile("mods/realistic_particles_fix/files/entities/projectiles/fireball.lua")
 dofile("mods/realistic_particles_fix/files/entities/projectiles/firebomb.lua")
+dofile("mods/realistic_particles_fix/files/entities/projectiles/flamethrower.lua")
