@@ -35,3 +35,4 @@ dofile("mods/realistic_particles_fix/files/entities/projectiles/spitter_tier_2.l
 dofile("mods/realistic_particles_fix/files/entities/projectiles/spitter_tier_3.lua")
 dofile("mods/realistic_particles_fix/files/entities/projectiles/spore_pod.lua")
 dofile("mods/realistic_particles_fix/files/entities/projectiles/tnt.lua")
+dofile("mods/realistic_particles_fix/files/entities/projectiles/firework.lua")
