@@ -19,6 +19,8 @@
 ### Fireball
 - Revert gameplay-changing attributes such as self harm
 - Fix missing material converting component
+### Firebomb
+- Fix gameplay-changing attributes such as explosion power
 
 # Changes
 
