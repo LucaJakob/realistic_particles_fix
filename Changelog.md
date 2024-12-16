@@ -86,3 +86,6 @@
 - Reduced explosion particle count from 4000 -> 150
 ### Large Spitter Bolt
 - Reduced trail particles from ~25 -> ~15
+
+### Oil Barrel
+- Reduced explosion particles from ~5000 -> ~2000
