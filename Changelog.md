@@ -27,6 +27,9 @@
 - Revert gameplay-changing attributes such as explosion power and behaviour
 ### Magic Bolt
 - Revert gameplay-changing knockback attribute
+### Glitter Bomb
+- Fix particle changes not being applied to shrapnel
+- Fix shrapnel causing intense lag due to excessive particles
 
 # Changes
 ### Bubble Spark
@@ -42,3 +45,5 @@
 - Reverted explosion texture to vanilla
 ### Bomb
 - Replaced red sparks from explosion with (default) orange
+### Glitter Bomb
+- Replaced orange sparks from fuse with bright purple 
