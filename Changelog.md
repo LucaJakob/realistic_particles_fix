@@ -23,3 +23,5 @@
 ### Bubble Spark
 - Removed red sparks from explosion
 - Light now lingers for a moment after explosion
+### Magic Arrow
+- Reverted minor screenshake change for the arrow landing
