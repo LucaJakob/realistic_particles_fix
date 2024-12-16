@@ -16,3 +16,4 @@ dofile("mods/realistic_particles_fix/files/entities/projectiles/freezing_gaze_be
 dofile("mods/realistic_particles_fix/files/entities/projectiles/bomb_cart.lua")
 dofile("mods/realistic_particles_fix/files/entities/projectiles/bomb_small.lua")
 dofile("mods/realistic_particles_fix/files/entities/projectiles/bomb.lua")
+dofile("mods/realistic_particles_fix/files/entities/projectiles/healshot.lua")
