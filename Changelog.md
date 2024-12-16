@@ -24,3 +24,7 @@
 - Light now lingers for a moment after explosion
 ### Magic Arrow
 - Reverted minor screenshake change for the arrow landing
+### Giga Death Cross
+- Reduced amount of particles from 200 -> 100
+### Death Cross
+- Reduced amount of particles from 800 -> 400

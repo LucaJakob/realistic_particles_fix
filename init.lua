@@ -7,3 +7,5 @@ dofile("mods/realistic_particles_fix/files/entities/projectiles/bullet_heavy.lua
 dofile("mods/realistic_particles_fix/files/entities/projectiles/bullet_slow.lua")
 dofile("mods/realistic_particles_fix/files/entities/projectiles/bullet.lua")
 dofile("mods/realistic_particles_fix/files/entities/projectiles/chain_bolt.lua")
+dofile("mods/realistic_particles_fix/files/entities/projectiles/death_cross_big.lua")
+dofile("mods/realistic_particles_fix/files/entities/projectiles/death_cross.lua")
