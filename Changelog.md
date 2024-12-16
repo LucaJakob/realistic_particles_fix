@@ -55,3 +55,6 @@
 ### Pinpoint of Light
 - Modified the trail the projectile leaves behind
 - Trails now fade with time
+### Concentrated Light
+- Modified the trail the projectile leaves behind
+- Trails now fade with time
