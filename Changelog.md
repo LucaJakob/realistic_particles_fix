@@ -61,3 +61,5 @@
 - Trails now fade with time
 ### Burst of Air
 - Reduced particles to avoid bright white light when spamming
+### Spark Bolt
+- Added sparks upon impact
