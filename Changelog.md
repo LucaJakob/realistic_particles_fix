@@ -17,7 +17,6 @@
 ### Energy Orb
 - Revert gameplay-changing attributes such as lifetime randomness and knockback
 
-
 # Changes
 
 ### Bubble Spark
