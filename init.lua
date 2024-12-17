@@ -1,43 +1,61 @@
--- Spells
-dofile("mods/realistic_particles_fix/files/entities/projectiles/arrow.lua")
-dofile("mods/realistic_particles_fix/files/entities/projectiles/black_hole.lua")
-dofile("mods/realistic_particles_fix/files/entities/projectiles/bouncy_orb.lua")
-dofile("mods/realistic_particles_fix/files/entities/projectiles/bubbleshot.lua")
-dofile("mods/realistic_particles_fix/files/entities/projectiles/bullet_heavy.lua")
-dofile("mods/realistic_particles_fix/files/entities/projectiles/bullet_slow.lua")
-dofile("mods/realistic_particles_fix/files/entities/projectiles/bullet.lua")
-dofile("mods/realistic_particles_fix/files/entities/projectiles/chain_bolt.lua")
-dofile("mods/realistic_particles_fix/files/entities/projectiles/death_cross_big.lua")
-dofile("mods/realistic_particles_fix/files/entities/projectiles/death_cross.lua")
-dofile("mods/realistic_particles_fix/files/entities/projectiles/fireball.lua")
-dofile("mods/realistic_particles_fix/files/entities/projectiles/firebomb.lua")
-dofile("mods/realistic_particles_fix/files/entities/projectiles/flamethrower.lua")
-dofile("mods/realistic_particles_fix/files/entities/projectiles/freezing_gaze_beam.lua")
-dofile("mods/realistic_particles_fix/files/entities/projectiles/bomb_cart.lua")
-dofile("mods/realistic_particles_fix/files/entities/projectiles/bomb_small.lua")
-dofile("mods/realistic_particles_fix/files/entities/projectiles/bomb.lua")
-dofile("mods/realistic_particles_fix/files/entities/projectiles/healshot.lua")
-dofile("mods/realistic_particles_fix/files/entities/projectiles/glitter_bomb.lua")
-dofile("mods/realistic_particles_fix/files/entities/projectiles/glitter_bomb_shrapnel.lua")
-dofile("mods/realistic_particles_fix/files/entities/projectiles/glowing_bolt.lua")
-dofile("mods/realistic_particles_fix/files/entities/projectiles/iceball.lua")
-dofile("mods/realistic_particles_fix/files/entities/projectiles/lance.lua")
-dofile("mods/realistic_particles_fix/files/entities/projectiles/laser.lua")
-dofile("mods/realistic_particles_fix/files/entities/projectiles/light_bullet_air.lua")
-dofile("mods/realistic_particles_fix/files/entities/projectiles/light_bullet.lua")
-dofile("mods/realistic_particles_fix/files/entities/projectiles/lightning.lua")
-dofile("mods/realistic_particles_fix/files/entities/projectiles/meteor.lua")
-dofile("mods/realistic_particles_fix/files/entities/projectiles/pollen.lua")
-dofile("mods/realistic_particles_fix/files/entities/projectiles/rocket_tier_2.lua")
-dofile("mods/realistic_particles_fix/files/entities/projectiles/rocket.lua")
-dofile("mods/realistic_particles_fix/files/entities/projectiles/rubber_ball.lua")
-dofile("mods/realistic_particles_fix/files/entities/projectiles/spitter_tier_2.lua")
-dofile("mods/realistic_particles_fix/files/entities/projectiles/spitter_tier_3.lua")
-dofile("mods/realistic_particles_fix/files/entities/projectiles/spore_pod.lua")
-dofile("mods/realistic_particles_fix/files/entities/projectiles/tnt.lua")
-dofile("mods/realistic_particles_fix/files/entities/projectiles/firework.lua")
--- Props
-dofile("mods/realistic_particles_fix/files/entities/props/physics_barrel_oil.lua")
-dofile("mods/realistic_particles_fix/files/entities/props/physics_barrel_radioactive.lua")
-dofile("mods/realistic_particles_fix/files/entities/props/physics_box_explosive.lua")
-dofile("mods/realistic_particles_fix/files/entities/props/suspended_barrel_radioactive.lua")
+local ns = "mods/realistic_particles_fix/files/"
+
+local projectiles = {
+    "arrow",
+    "black_hole",
+    "bomb_cart",
+    "bomb_small",
+    "bomb",
+    "bouncy_orb",
+    "bubbleshot",
+    "bullet_heavy",
+    "bullet_slow",
+    "bullet",
+    "chain_bolt",
+    "death_cross_big",
+    "death_cross",
+    "fireball",
+    "firebomb",
+    "firework",
+    "flamethrower",
+    "freezing_gaze_beam",
+    "glitter_bomb",
+    "glowing_bolt",
+    "healshot",
+    "iceball",
+    "lance",
+    "laser",
+    "light_bullet_air",
+    "light_bullet",
+    "lightning",
+    "meteor",
+    "pollen",
+    "rocket_tier_2",
+    "rocket",
+    "rubber_ball",
+    "spitter_tier_2",
+    "spitter_tier_3",
+    "spitter",
+    "spore_pod",
+    "tnt"
+}
+
+local props = {
+    "physics_barrel_oil",
+    "physics_barrel_radioactive",
+    "physics_box_explosive",
+    "suspended_tank_radioactive",
+}
+
+for i, name in pairs(projectiles) do
+    local enabled = ModSettingGet("realistic_particles_fix.particles." .. name)
+    if enabled == true then
+        dofile(ns .. "entities/projectiles/" .. name .. ".lua")
+    end
+end
+for i, name in pairs(props) do
+    local enabled = ModSettingGet("realistic_particles_fix.particles." .. name)
+    if enabled == true then
+        dofile(ns .. "entities/props/" .. name .. ".lua")
+    end
+end

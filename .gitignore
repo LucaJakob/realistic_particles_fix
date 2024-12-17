@@ -1,2 +1,5 @@
 # noita source data for fixing parameters
 source_data
+
+# dev environment
+.vscode
