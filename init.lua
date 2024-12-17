@@ -38,3 +38,6 @@ dofile("mods/realistic_particles_fix/files/entities/projectiles/tnt.lua")
 dofile("mods/realistic_particles_fix/files/entities/projectiles/firework.lua")
 -- Props
 dofile("mods/realistic_particles_fix/files/entities/props/physics_barrel_oil.lua")
+dofile("mods/realistic_particles_fix/files/entities/props/physics_barrel_radioactive.lua")
+dofile("mods/realistic_particles_fix/files/entities/props/physics_box_explosive.lua")
+dofile("mods/realistic_particles_fix/files/entities/props/suspended_barrel_radioactive.lua")

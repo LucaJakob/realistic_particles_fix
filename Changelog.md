@@ -52,6 +52,9 @@
 ### Dynamite
 - Revert gameplay-changing attributes such as throwing distance, lifetime, speed, damage and more
 
+### Explosive Box
+- Revert gameplay-changing attributes such as flammability
+
 # Changes
 ### Bubble Spark
 - Replaced red sparks from explosion with blue sparks
@@ -89,3 +92,11 @@
 
 ### Oil Barrel
 - Reduced explosion particles from ~5000 -> ~2000
+### Toxic Barrel
+- Reduced explosion particles from ~5000 -> ~2000
+- Changed spark color to green
+### Explosive Box
+- Reduced explosion particles from ~1000 -> ~500
+
+# Features since RP v3.0.0
+- Added suspended radioactive barrel
