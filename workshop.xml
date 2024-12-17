@@ -1,0 +1,8 @@
+<Mod
+    name="Realistic Particles Fix"
+    description=""
+    tags="graphics"
+    dont_upload_folders="source_data"
+    dont_upload_files="Changelog.md"
+    >
+</Mod>
