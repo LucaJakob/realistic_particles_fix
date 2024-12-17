@@ -1,5 +1,5 @@
 ---@type nxml
-local nxml = dofile_once("mods/realistic_particles_fix/lib/nxml.lua")
+local nxml = dofile_once("mods/realistic_particles_fix/lib/nxml/nxml.lua")
 
 for content in nxml.edit_file("data/entities/projectiles/deck/chain_bolt.xml", ModTextFileGetContent, ModTextFileSetContent) do
     local emitter = content:first_of("ParticleEmitterComponent")

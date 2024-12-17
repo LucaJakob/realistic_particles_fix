@@ -1,5 +1,5 @@
 ---@type nxml
-local nxml = dofile_once("mods/realistic_particles_fix/lib/nxml.lua")
+local nxml = dofile_once("mods/realistic_particles_fix/lib/nxml/nxml.lua")
 
 for content in nxml.edit_file("data/entities/projectiles/bomb.xml", ModTextFileGetContent, ModTextFileSetContent) do
     local explosion = content:first_of("Base"):first_of("ProjectileComponent"):first_of("config_explosion")

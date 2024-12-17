@@ -1,5 +1,5 @@
 ---@type nxml
-local nxml = dofile_once("mods/realistic_particles_fix/lib/nxml.lua")
+local nxml = dofile_once("mods/realistic_particles_fix/lib/nxml/nxml.lua")
 
 -- BLUE
 for content in nxml.edit_file("data/entities/projectiles/deck/fireworks/firework_blue.xml", ModTextFileGetContent, ModTextFileSetContent) do
