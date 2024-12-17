@@ -185,12 +185,14 @@ local mod_settings =
 }
 
 -- particles
+table.sort(mod_settings[1]["settings"], function(a, b) return a["ui_name"] < b["ui_name"] end)
 for i, setting in pairs(mod_settings[1]["settings"]) do
     setting["ui_description"] = "Whether or not to display " .. setting["ui_name"] .. " particles."
     setting["value_default"] = true
     setting["scope"] = MOD_SETTING_SCOPE_RUNTIME_RESTART
 end
 -- props
+table.sort(mod_settings[2]["settings"], function(a, b) return a["ui_name"] < b["ui_name"] end)
 for i, setting in pairs(mod_settings[2]["settings"]) do
     setting["ui_description"] = "Whether or not to display " .. setting["ui_name"] .. " particles."
     setting["value_default"] = true
