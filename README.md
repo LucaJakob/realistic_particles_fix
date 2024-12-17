@@ -7,6 +7,10 @@ Projectiles are now edited instead of replaced. This ensures that future updates
 
 This mod does not require the original mod to work.
 
+
+https://github.com/user-attachments/assets/dd31ff4e-f2e9-444d-bc66-37a89bb0ecb3
+
+
 ## Notable changes:
 - Many projectiles now deal their most up-to-date damage
 - The spread of projectiles is now back in sync with Noita
