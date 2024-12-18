@@ -1,7 +1,4 @@
-local mod_id = "realistic_particles_fix"
-dofile_once("mods/" .. mod_id .. "/files/globals/utils.lua")
-dofile_once("mods/" .. mod_id .. "/files/globals/projectiles.lua")
-dofile_once("mods/" .. mod_id .. "/files/globals/props.lua")
+dofile_once("mods/realistic_particles_fix/settings.lua")
 
 local ns = "mods/" .. mod_id .. "/files/"
 
