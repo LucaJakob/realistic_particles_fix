@@ -1,22 +1,22 @@
 RP_props =  {
     {
-        id = "particles.physics_barrel_oil",
+        id = "physics_barrel_oil",
         ui_name = "Oil Barrel",
     },
     {
-        id = "particles.physics_barrel_radioactive",
+        id = "physics_barrel_radioactive",
         ui_name = "Toxic Barrel",
     },
     {
-        id = "particles.physics_box_explosive",
+        id = "physics_box_explosive",
         ui_name = "Explosive Box",
     },
     {
-        id = "particles.suspended_tank_radioactive",
+        id = "suspended_tank_radioactive",
         ui_name = "Toxic Barrel (Suspended)",
     },
     {
-        id = "particles.physics_propane_tank",
+        id = "physics_propane_tank",
         ui_name = "Propane Tank",
     }
 }

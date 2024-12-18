@@ -12,6 +12,6 @@ for i, item in pairs(RP_projectiles) do
 end
 for i, item in pairs(RP_props) do
     if not IsDisabled( item ) then
-        dofile(ns .. "props/" .. item.id .. ".lua")
+        dofile(ns .. "entities/props/" .. item.id .. ".lua")
     end
 end

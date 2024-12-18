@@ -19,39 +19,20 @@ local props_category = {
 }
 
 function ModSettingsUpdate( init_scope )
-    mod_settings_update( mod_id, {}, init_scope)
-	-- local old_version = mod_settings_get_version( mod_id ) -- This can be used to migrate some settings between mod versions.
-    -- for i, item in ipairs(RP_projectiles) do
-    --     -- Default is true, but if user has selected false, it won't be overridden
-    --     ModSettingSetNextValue( ToSettingId( item ), false, true )
-    -- end
-    -- for i, item in ipairs(RP_props) do
-    --     -- Default is true, but if user has selected false, it won't be overridden
-    --     ModSettingSetNextValue( ToSettingId( item ), true, true )
-    -- end
+	-- set settings to new value if the update scope is correct
+	for i, item in ipairs(RP_projectiles) do
+        if MOD_SETTING_SCOPE_RUNTIME_RESTART >= init_scope then
+            local next_value = ModSettingGetNextValue( ToSettingId( item ) )
+            if next_value ~= nil then
+                ModSettingSet( ToSettingId( item ), next_value )
+            end
+		end
+	end
 
-	-- -- set settings to new value if the update scope is correc
-    -- for i, item in ipairs(RP_projectiles) do
-    --     if MOD_SETTING_SCOPE_RUNTIME_RESTART >= init_scope then
-    --         local next_value = ModSettingGetNextValue( ToSettingId( item ) )
-    --         if next_value ~= nil then
-    --             ModSettingSet( ToSettingId( item ), next_value )
-    --         end
-    --     end
-    -- end
-    -- for i, item in ipairs(RP_props) do
-    --     if MOD_SETTING_SCOPE_RUNTIME_RESTART >= init_scope then
-    --         local next_value = ModSettingGetNextValue( ToSettingId( item ) )
-    --         if next_value ~= nil then
-    --             ModSettingSet( ToSettingId( item ), next_value )
-    --         end
-    --     end
-    -- end
-
-	-- -- update mod settings version
-	-- if type(mod_settings_version) == "number" then
-	-- 	ModSettingSet( ToSettingId( { id = "_version" } ), mod_settings_version )
-	-- end
+	-- update mod settings version
+	if type(mod_settings_version) == "number" then
+		ModSettingSet( ToSettingId({ id="_version" }), mod_settings_version )
+	end
 end
 
 
