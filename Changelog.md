@@ -100,3 +100,5 @@
 
 # Features since RP v3.0.0
 - Added suspended radioactive barrel
+- Added Spark Bolt with Double Trigger
+- Added Propane Tank

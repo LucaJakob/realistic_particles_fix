@@ -45,6 +45,7 @@ local props = {
     "physics_barrel_radioactive",
     "physics_box_explosive",
     "suspended_tank_radioactive",
+    "physics_propane_tank"
 }
 
 for i, name in pairs(projectiles) do

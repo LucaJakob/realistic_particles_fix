@@ -180,6 +180,10 @@ local mod_settings =
 				id = "particles.suspended_tank_radioactive",
 				ui_name = "Toxic Barrel (Suspended)",
 			},
+            {
+				id = "particles.physics_propane_tank",
+				ui_name = "Propane Tank",
+			},
         }
     }
 }
