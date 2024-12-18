@@ -154,6 +154,10 @@ local mod_settings =
             {
                 id = "particles.tnt",
                 ui_name = "Dynamite"
+            },
+            {
+                id = "particles.lance_holy",
+                ui_name = "Holy Lance"
             }
 		},
 	},

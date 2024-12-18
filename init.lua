@@ -37,7 +37,8 @@ local projectiles = {
     "spitter_tier_3",
     "spitter",
     "spore_pod",
-    "tnt"
+    "tnt",
+    "lance_holy"
 }
 
 local props = {
