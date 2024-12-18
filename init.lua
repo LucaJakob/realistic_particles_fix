@@ -1,67 +1,17 @@
-local ns = "mods/realistic_particles_fix/files/"
+local mod_id = "realistic_particles_fix"
+dofile_once("mods/" .. mod_id .. "/files/globals/utils.lua")
+dofile_once("mods/" .. mod_id .. "/files/globals/projectiles.lua")
+dofile_once("mods/" .. mod_id .. "/files/globals/props.lua")
 
-local projectiles = {
-    "arrow",
-    "black_hole",
-    "bomb_cart",
-    "bomb_small",
-    "bomb",
-    "bouncy_orb",
-    "bubbleshot",
-    "bullet_heavy",
-    "bullet_slow",
-    "bullet",
-    "chain_bolt",
-    "death_cross_big",
-    "death_cross",
-    "fireball",
-    "firebomb",
-    "firework",
-    "flamethrower",
-    "freezing_gaze_beam",
-    "glitter_bomb",
-    "glowing_bolt",
-    "healshot",
-    "iceball",
-    "lance",
-    "laser",
-    "light_bullet_air",
-    "light_bullet",
-    "lightning",
-    "meteor",
-    "pollen",
-    "rocket_tier_2",
-    "rocket",
-    "rubber_ball",
-    "spitter_tier_2",
-    "spitter_tier_3",
-    "spitter",
-    "spore_pod",
-    "tnt",
-    "lance_holy",
-    "rocket_tier_3",
-    "nuke",
-    "bomb_holy",
-    "nuke_giga"
-}
+local ns = "mods/" .. mod_id .. "/files/"
 
-local props = {
-    "physics_barrel_oil",
-    "physics_barrel_radioactive",
-    "physics_box_explosive",
-    "suspended_tank_radioactive",
-    "physics_propane_tank"
-}
-
-for i, name in pairs(projectiles) do
-    local enabled = ModSettingGet("realistic_particles_fix.particles." .. name)
-    if enabled == true then
-        dofile(ns .. "entities/projectiles/" .. name .. ".lua")
+for i, item in pairs(RP_projectiles) do
+    if not IsDisabled( item ) then
+        dofile(ns .. "entities/projectiles/" .. item.id .. ".lua")
     end
 end
-for i, name in pairs(props) do
-    local enabled = ModSettingGet("realistic_particles_fix.particles." .. name)
-    if enabled == true then
-        dofile(ns .. "entities/props/" .. name .. ".lua")
+for i, item in pairs(RP_props) do
+    if not IsDisabled( item ) then
+        dofile(ns .. "props/" .. item.id .. ".lua")
     end
 end

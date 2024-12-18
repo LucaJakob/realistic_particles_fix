@@ -1,237 +1,160 @@
 dofile("data/scripts/lib/mod_settings.lua") -- see this file for documentation on some of the features.
 
 local mod_id = "realistic_particles_fix"
+dofile_once("mods/" .. mod_id .. "/files/globals/utils.lua")
+dofile_once("mods/" .. mod_id .. "/files/globals/projectiles.lua")
+dofile_once("mods/" .. mod_id .. "/files/globals/props.lua")
+
 local mod_settings_version = 1
-local mod_settings =
-{
-	{
-		category_id = "projectile_bools",
-		ui_name = "Particle Changes",
-		ui_description = "Enable or disable projectile visuals. Requires a restart to apply.",
-        foldable = true,
-        _folded = true,
-		settings = {
-			{
-				id = "particles.arrow",
-				ui_name = "Arrow",
-			},
-            {
-				id = "particles.black_hole",
-				ui_name = "Black Hole",
-			},
-            {
-                id = "particles.bomb_cart",
-                ui_name = "Bomb Cart"
-            },
-            {
-                id = "particles.bomb",
-                ui_name = "Bomb"
-            },
-            {
-                id = "particles.bouncy_orb",
-                ui_name = "Energy Sphere"
-            },
-            {
-                id = "particles.bubbleshot",
-                ui_name = "Bubble Spark"
-            },
-            {
-                id = "particles.bullet_heavy",
-                ui_name = "Magic Bolt"
-            },
-            {
-                id = "particles.bullet_slow",
-                ui_name = "Energy Orb"
-            },
-            {
-                id = "particles.bullet",
-                ui_name = "Magic Arrow"
-            },
-            {
-                id = "particles.chain_bolt",
-                ui_name = "Chain Bolt"
-            },
-            {
-                id = "particles.death_cross_big",
-                ui_name = "Giga Death Cross"
-            },
-            {
-                id = "particles.death_cross",
-                ui_name = "Death Cross"
-            },
-            {
-                id = "particles.fireball",
-                ui_name = "Fireball"
-            },
-            {
-                id = "particles.firebomb",
-                ui_name = "Firebomb"
-            },
-            {
-                id = "particles.firework",
-                ui_name = "Fireworks"
-            },
-            {
-                id = "particles.flamethrower",
-                ui_name = "Flamethrower"
-            },
-            {
-                id = "particles.freezing_gaze_beam",
-                ui_name = "Freezing Gaze"
-            },
-            {
-                id = "particles.glitter_bomb",
-                ui_name = "Glitter Bomb"
-            },
-            {
-                id = "particles.glowing_bolt",
-                ui_name = "Pinpoint of Light"
-            },
-            {
-                id = "particles.healshot",
-                ui_name = "Healing Bolt"
-            },
-            {
-                id = "particles.iceball",
-                ui_name = "Iceball"
-            },
-            {
-                id = "particles.lance",
-                ui_name = "Glowing Lance"
-            },
-            {
-                id = "particles.laser",
-                ui_name = "Concentrated Light"
-            },
-            {
-                id = "particles.light_bullet_air",
-                ui_name = "Burst of Air"
-            },
-            {
-                id = "particles.light_bullet",
-                ui_name = "Spark Bolt"
-            },
-            {
-                id = "particles.lightning",
-                ui_name = "Lightning Bolt"
-            },
-            {
-                id = "particles.meteor",
-                ui_name = "Meteor"
-            },
-            {
-                id = "particles.pollen",
-                ui_name = "Pollen"
-            },
-            {
-                id = "particles.rocket_tier_2",
-                ui_name = "Large Magic Missile"
-            },
-            {
-                id = "particles.rocket",
-                ui_name = "Magic Missile"
-            },
-            {
-                id = "particles.rubber_ball",
-                ui_name = "Bouncing Burst"
-            },
-            {
-                id = "particles.spitter_tier_2",
-                ui_name = "Large Spitter Bolt"
-            },
-            {
-                id = "particles.spitter_tier_3",
-                ui_name = "Giant Spitter Bolt"
-            },
-            {
-                id = "particles.spitter",
-                ui_name = "Spitter Bolt"
-            },
-            {
-                id = "particles.spore_pod",
-                ui_name = "Spore Pod"
-            },
-            {
-                id = "particles.tnt",
-                ui_name = "Dynamite"
-            },
-            {
-                id = "particles.lance_holy",
-                ui_name = "Holy Lance"
-            },
-            {
-                id = "particles.rocket_tier_3",
-                ui_name = "Giant Magic Missile"
-            },
-            {
-                id = "particles.nuke",
-                ui_name = "Nuke"
-            },
-            {
-                id = "particles.bomb_holy",
-                ui_name = "Holy Bomb"
-            },
-            {
-                id = "particles.nuke_giga",
-                ui_name = "Giga Nuke"
-            }
-		},
-	},
-    {
-		category_id = "props_bools",
-		ui_name = "Props Changes",
-		ui_description = "Enable or disable specific prop visuals. Requires a restart to apply.",
-        foldable = true,
-        _folded = true,
-		settings = {
-            {
-				id = "particles.physics_barrel_oil",
-				ui_name = "Oil Barrel",
-			},
-            {
-				id = "particles.physics_barrel_radioactive",
-				ui_name = "Toxic Barrel",
-			},
-            {
-				id = "particles.physics_box_explosive",
-				ui_name = "Explosive Box",
-			},
-            {
-				id = "particles.suspended_tank_radioactive",
-				ui_name = "Toxic Barrel (Suspended)",
-			},
-            {
-				id = "particles.physics_propane_tank",
-				ui_name = "Propane Tank",
-			},
-        }
-    }
+
+local projectiles_category = {
+    ui_name = "----- Projectiles -----",
+    ui_description = "Manage particles related to projectiles",
+    _folded = true
+}
+local props_category = {
+    ui_name = "----- Physics Objects -----",
+    ui_description = "Manage particles related to physics objects",
+    _folded = true
 }
 
--- particles
-table.sort(mod_settings[1]["settings"], function(a, b) return a["ui_name"] < b["ui_name"] end)
-for i, setting in pairs(mod_settings[1]["settings"]) do
-    setting["ui_description"] = "Whether or not to display " .. setting["ui_name"] .. " particles."
-    setting["value_default"] = true
-    setting["scope"] = MOD_SETTING_SCOPE_RUNTIME_RESTART
-end
--- props
-table.sort(mod_settings[2]["settings"], function(a, b) return a["ui_name"] < b["ui_name"] end)
-for i, setting in pairs(mod_settings[2]["settings"]) do
-    setting["ui_description"] = "Whether or not to display " .. setting["ui_name"] .. " particles."
-    setting["value_default"] = true
-    setting["scope"] = MOD_SETTING_SCOPE_RUNTIME_RESTART
+function ModSettingsUpdate( init_scope )
+    mod_settings_update( mod_id, {}, init_scope)
+	-- local old_version = mod_settings_get_version( mod_id ) -- This can be used to migrate some settings between mod versions.
+    -- for i, item in ipairs(RP_projectiles) do
+    --     -- Default is true, but if user has selected false, it won't be overridden
+    --     ModSettingSetNextValue( ToSettingId( item ), false, true )
+    -- end
+    -- for i, item in ipairs(RP_props) do
+    --     -- Default is true, but if user has selected false, it won't be overridden
+    --     ModSettingSetNextValue( ToSettingId( item ), true, true )
+    -- end
+
+	-- -- set settings to new value if the update scope is correc
+    -- for i, item in ipairs(RP_projectiles) do
+    --     if MOD_SETTING_SCOPE_RUNTIME_RESTART >= init_scope then
+    --         local next_value = ModSettingGetNextValue( ToSettingId( item ) )
+    --         if next_value ~= nil then
+    --             ModSettingSet( ToSettingId( item ), next_value )
+    --         end
+    --     end
+    -- end
+    -- for i, item in ipairs(RP_props) do
+    --     if MOD_SETTING_SCOPE_RUNTIME_RESTART >= init_scope then
+    --         local next_value = ModSettingGetNextValue( ToSettingId( item ) )
+    --         if next_value ~= nil then
+    --             ModSettingSet( ToSettingId( item ), next_value )
+    --         end
+    --     end
+    -- end
+
+	-- -- update mod settings version
+	-- if type(mod_settings_version) == "number" then
+	-- 	ModSettingSet( ToSettingId( { id = "_version" } ), mod_settings_version )
+	-- end
 end
 
-function ModSettingsUpdate( init_scope )
-	local old_version = mod_settings_get_version( mod_id ) -- This can be used to migrate some settings between mod versions.
-	mod_settings_update( mod_id, mod_settings, init_scope )
-end
 
 function ModSettingsGuiCount()
-	return mod_settings_gui_count( mod_id, mod_settings )
+	return #RP_projectiles + #RP_props
+end
+
+
+
+
+
+local function CustomCheckboxGui ( gui, element_id, any_global )
+    GuiLayoutBeginHorizontal( gui, 0, 0, false, 2, 2 )
+
+    if (GuiImageButton( gui, element_id, 5, 0, "", any_global.sprite )) then
+        Toggle( any_global )
+    end
+
+    if IsDisabledNext( any_global ) then
+        GuiTooltip( gui, any_global.ui_description, "[ Click to enable ]");
+    else
+        GuiTooltip( gui, any_global.ui_description, "[ Click to disable ]");
+    end
+
+    if IsDisabledNext( any_global ) then
+        GuiOptionsAddForNextWidget( gui, GUI_OPTION.DrawSemiTransparent )
+        if (GuiButton( gui, element_id, 0, 1, any_global.ui_name )) then
+            Toggle( any_global )
+        end
+    else
+        if (GuiButton( gui, element_id, 1.5, 1, any_global.ui_name )) then
+            Toggle( any_global )
+        end
+    end
+
+    if IsDisabledNext( any_global ) then
+        GuiTooltip( gui, any_global.ui_description, "[ Click to enable ]" );
+    else
+        GuiTooltip( gui, any_global.ui_description, "[ Click to disable ]" );
+    end
+
+    GuiLayoutEnd( gui )
+end
+
+function GuiToggleAllButtons( gui, id_enable_all, id_disable_all, enumerable )
+    GuiLayoutBeginHorizontal( gui, 0, 0, false, 15, 10 )
+
+    if (GuiButton( gui, id_enable_all, 0, 0, "Enable All" )) then
+        for i, item in pairs( enumerable ) do
+            Enable( item )
+        end
+    end
+
+    if (GuiButton( gui, id_disable_all, 0, 0, "Disable All" )) then
+        for i, item in pairs( enumerable )do
+            Disable( item )
+        end
+    end
+    GuiLayoutEnd(gui)
 end
 
 function ModSettingsGui( gui, in_main_menu )
-	mod_settings_gui( mod_id, mod_settings, gui, in_main_menu )
+    
+    -- These are global variables, despite the warning
+	screen_width, screen_height = GuiGetScreenDimensions(gui)
+
+    local _id = 3386002831 -- == workshop id
+    local function id()
+        _id = _id + 1
+        return _id
+    end
+    
+    local clicked_category_heading = mod_setting_category_button( mod_id, gui, id(), id(), projectiles_category)
+    if not projectiles_category._folded then
+        GuiAnimateBegin( gui )
+
+        GuiAnimateAlphaFadeIn( gui, 3458923234, 0.1, 0.0, clicked_category_heading )
+        
+        GuiText( gui, 0, 0, " " )
+        GuiToggleAllButtons( gui, id(), id(), RP_projectiles )
+
+        for i, projectile in pairs( RP_projectiles ) do
+            CustomCheckboxGui( gui, id(), projectile )
+        end
+
+        GuiAnimateEnd( gui )
+        GuiLayoutAddVerticalSpacing( gui, 4 )
+    end
+
+    clicked_category_heading = mod_setting_category_button( mod_id, gui, id(), id(), props_category)
+    if not props_category._folded then
+        GuiAnimateBegin( gui )
+
+        GuiAnimateAlphaFadeIn( gui, 3458923234, 0.1, 0.0, clicked_category_heading )
+        
+        GuiText( gui, 0, 0, " " )
+        GuiToggleAllButtons( gui, id(), id(), RP_props )
+
+        for i, prop in pairs( RP_props ) do
+            CustomCheckboxGui( gui, id(), prop )
+        end
+
+        GuiAnimateEnd( gui )
+        GuiLayoutAddVerticalSpacing( gui, 4 )
+    end
 end
