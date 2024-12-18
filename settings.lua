@@ -158,6 +158,22 @@ local mod_settings =
             {
                 id = "particles.lance_holy",
                 ui_name = "Holy Lance"
+            },
+            {
+                id = "particles.rocket_tier_3",
+                ui_name = "Giant Magic Missile"
+            },
+            {
+                id = "particles.nuke",
+                ui_name = "Nuke"
+            },
+            {
+                id = "particles.bomb_holy",
+                ui_name = "Holy Bomb"
+            },
+            {
+                id = "particles.nuke_giga",
+                ui_name = "Giga Nuke"
             }
 		},
 	},
