@@ -218,22 +218,27 @@ RP_props = {
     {
         id = "physics_barrel_oil",
         ui_name = "Oil Barrel",
+        sprite = "data/props_gfx/barrel_unstable.png",
     },
     {
         id = "physics_barrel_radioactive",
         ui_name = "Toxic Barrel",
+        sprite = "data/props_gfx/barrel_radioactive.png",
     },
     {
         id = "physics_box_explosive",
         ui_name = "Explosive Box",
+        sprite = "data/props_gfx/tnt.png",
     },
     {
         id = "suspended_tank_radioactive",
         ui_name = "Toxic Barrel (Suspended)",
+        sprite = "data/props_gfx/suspended_tank_radioactive.png",
     },
     {
         id = "physics_propane_tank",
         ui_name = "Propane Tank",
+        sprite = "data/props_gfx/propane_tank.png"
     },
 }
 
@@ -297,9 +302,27 @@ function ModSettingsGuiCount()
     return count
 end
 
+local function GuiOptionIcon( gui, element_id, image_file, hovered, box_height )
+    -- Make image responsive to hover
+    local scale = hovered and 1.2 or 1
+    local x_offset = 5
+
+    local img_width, img_height = GuiGetImageDimensions( gui, image_file, scale )
+    local _, img_height_unscaled = GuiGetImageDimensions( gui, image_file, 1 )
+
+    local img_y_margin =  (box_height - img_height_unscaled) / 2
+    local img_y_offset = (img_height - img_height_unscaled) / 2
+
+    local img_x = x_offset - (img_width / 2)
+    local img_y = hovered and (img_y_margin - img_y_offset) or img_y_margin
+
+    GuiImage(gui, element_id, img_x, img_y, image_file, 1, scale)
+end
+
 local function CustomCheckboxGui(gui, element_id, any_global)
     local image_file = any_global.sprite or "data/ui_gfx/gun_actions/unidentified.png"
-    local text_len = GuiGetTextDimensions(gui, any_global.ui_name)
+    local text_len, text_height = GuiGetTextDimensions(gui, any_global.ui_name)
+
     local mod_setting_id = ToSettingId(any_global)
     local disabled = ModSettingGet(mod_setting_id)
     local disabled_next = ModSettingGetNextValue(mod_setting_id)
@@ -308,28 +331,30 @@ local function CustomCheckboxGui(gui, element_id, any_global)
     GuiText(gui, 0, 0, "")
     local _, _, _, x, y = GuiGetPreviousWidgetInfo(gui)
 
+    local nine_piece_height = 16
     --- Hover box and tooltip
     GuiOptionsAddForNextWidget(gui, GUI_OPTION.ForceFocusable)
-    GuiImageNinePiece(gui, element_id, x, y, text_len + 27, 16, 0)
+    GuiImageNinePiece(gui, element_id, x, y, text_len + 27, nine_piece_height, 0)
+
+    local text_x = 25
+    local text_y = math.ceil((nine_piece_height - text_height) / 2)
+
+    local clicked, _, hovered = GuiGetPreviousWidgetInfo(gui)
+
     local tooltip_text = disabled_next and "[ Click to enable ]" or "[ Click to disable ]"
     if disabled ~= disabled_next then
         tooltip_text = tooltip_text .. "\n" .. GameTextGetTranslatedOrNot("$menu_modsettings_changes_restart")
     end
+
     GuiTooltip(gui, any_global.ui_description, tooltip_text)
-    local clicked, _, hovered = GuiGetPreviousWidgetInfo(gui)
-
-    --- Making image responsive to hover
-    local scale = hovered and 1.2 or 1
-    local offset = hovered and 1.6 or 0
-    GuiImage(gui, element_id, 5 - offset, 0 - offset, image_file, 1, scale)
-
+    GuiOptionIcon( gui, element_id, image_file, hovered, nine_piece_height )
     --- Text
     if disabled_next then
         GuiColorSetForNextWidget(gui, 0.6, 0.6, 0.6, 1)
     elseif hovered then
         GuiColorSetForNextWidget(gui, 1, 1, 0.7, 1)
     end
-    GuiText(gui, 25, 3, any_global.ui_name)
+    GuiText(gui, text_x, text_y, any_global.ui_name)
 
     GuiOptionsRemove(gui, GUI_OPTION.Layout_NextSameLine)
     GuiText(gui, 0, 5, " ")
