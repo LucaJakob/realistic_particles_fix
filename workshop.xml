@@ -19,6 +19,9 @@ Notable changes:
 - Projectile count has been reduced in a few places to avoid bright white glares
 
 Check the changelog for the full list!
+Source code: https://github.com/LucaJakob/realistic_particles_fix/
+
+If you do not like a specific particle change, you can disable that projectile/prop in the Mod Settings.
 
 Q&A:
 
@@ -29,7 +32,7 @@ Q: Will this mod work with other mods?
 A: This mod was rewritten to be as compatible as possible. If you encounter errors when using it with other mods, let me know so I can fix it!
 
 Q: Will you update this mod in the future?
-A: The previous workshop submission hasn't been updated in over a year. While I cannot guarantee that new projectiles will be added onto this mod, I will try to fix any issues you may encounter. Future plans also involve a settings menu if you particularly despise a specific projectile's look."
+A: The previous workshop submission hasn't been updated in over a year. While I cannot guarantee that new projectiles will be added onto this mod, I will try to fix any issues you may encounter."
     tags="graphics"
     dont_upload_folders="source_data"
     dont_upload_files="Changelog.md"
