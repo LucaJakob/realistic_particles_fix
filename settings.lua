@@ -237,25 +237,29 @@ RP_props = {
     },
 }
 
-RP_categories = { RP_projectiles, RP_props, }
-local categories = {
+RP_categories = {
     {
         ui_name = "----- Projectiles -----",
         ui_description = "Manage particles related to projectiles",
+        folder_path = "mods/" .. mod_id .. "/files/entities/projectiles/",
+        items = RP_projectiles,
         _folded = true,
     },
     {
         ui_name = "----- Physics Objects -----",
         ui_description = "Manage particles related to physics objects",
+        folder_path = "mods/" .. mod_id .. "/files/entities/props/",
+        items = RP_props,
         _folded = true,
     },
 }
 
 for _, category in ipairs(RP_categories) do
-    table.sort(category, function(a, b)
+    local items = category["items"]
+    table.sort(items, function(a, b)
         return a["ui_name"] < b["ui_name"]
     end)
-    for _, setting in pairs(category) do
+    for _, setting in pairs(items) do
         setting["ui_description"] = "Whether or not to display " .. setting["ui_name"] .. " particles."
         setting["value_default"] = true
         setting["scope"] = MOD_SETTING_SCOPE_RUNTIME_RESTART
@@ -273,7 +277,7 @@ end
 function ModSettingsUpdate(init_scope)
     -- set settings to new value if the update scope is correct
     for _, category in ipairs(RP_categories) do
-        for _, item in ipairs(category) do
+        for _, item in ipairs(category["items"]) do
             if MOD_SETTING_SCOPE_RUNTIME_RESTART >= init_scope then
                 local next_value = ModSettingGetNextValue(ToSettingId(item))
                 if next_value ~= nil then ModSettingSet(ToSettingId(item), next_value) end
@@ -288,14 +292,14 @@ end
 function ModSettingsGuiCount()
     local count = 0
     for _, category in ipairs(RP_categories) do
-        count = count + #category
+        count = count + #category["items"]
     end
     return count
 end
 
 local function CustomCheckboxGui(gui, element_id, any_global)
     local image_file = any_global.sprite or "data/ui_gfx/gun_actions/unidentified.png"
-    local text_lenght = GuiGetTextDimensions(gui, any_global.ui_name)
+    local text_len = GuiGetTextDimensions(gui, any_global.ui_name)
     local mod_setting_id = ToSettingId(any_global)
     local disabled = ModSettingGet(mod_setting_id)
     local disabled_next = ModSettingGetNextValue(mod_setting_id)
@@ -306,7 +310,7 @@ local function CustomCheckboxGui(gui, element_id, any_global)
 
     --- Hover box and tooltip
     GuiOptionsAddForNextWidget(gui, GUI_OPTION.ForceFocusable)
-    GuiImageNinePiece(gui, element_id, x, y, text_lenght + 27, 16, 0)
+    GuiImageNinePiece(gui, element_id, x, y, text_len + 27, 16, 0)
     local tooltip_text = disabled_next and "[ Click to enable ]" or "[ Click to disable ]"
     if disabled ~= disabled_next then
         tooltip_text = tooltip_text .. "\n" .. GameTextGetTranslatedOrNot("$menu_modsettings_changes_restart")
@@ -321,7 +325,7 @@ local function CustomCheckboxGui(gui, element_id, any_global)
 
     --- Text
     if disabled_next then
-        GuiColorSetForNextWidget(gui, 0.7, 0.7, 0.7, 1)
+        GuiColorSetForNextWidget(gui, 0.6, 0.6, 0.6, 1)
     elseif hovered then
         GuiColorSetForNextWidget(gui, 1, 1, 0.7, 1)
     end
@@ -365,16 +369,17 @@ function ModSettingsGui(gui, in_main_menu)
     end
 
     for i, category in ipairs(RP_categories) do
-        local clicked_category_heading = mod_setting_category_button(mod_id, gui, id(), id(), categories[i])
-        if not categories[i]._folded then
+        local clicked_category_heading = mod_setting_category_button(mod_id, gui, id(), id(), category)
+        if not category._folded then
+            local items = category["items"]
             GuiAnimateBegin(gui)
 
-            GuiAnimateAlphaFadeIn(gui, 3458923234, 0.1, 0.0, clicked_category_heading)
+            GuiAnimateAlphaFadeIn(gui, id(), 0.1, 0.0, clicked_category_heading)
 
             GuiText(gui, 0, 0, " ")
-            GuiToggleAllButtons(gui, id(), id(), category)
+            GuiToggleAllButtons(gui, id(), id(), items)
 
-            for _, spell in ipairs(category) do
+            for _, spell in ipairs(items) do
                 CustomCheckboxGui(gui, id(), spell)
             end
 
