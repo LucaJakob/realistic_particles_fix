@@ -240,6 +240,17 @@ RP_props = {
         ui_name = "Propane Tank",
         sprite = "data/props_gfx/propane_tank.png"
     },
+    {
+        id = "physics_crate",
+        ui_name = "Explosive Crate",
+        sprite = "data/props_gfx/crate.png"
+    },
+    {
+        id = "physics_fungus",
+        ui_name = "Fungus",
+        sprite = "data/props_gfx/physics_fungus_cap_03.png",
+        scope = MOD_SETTING_SCOPE_NEW_GAME,
+    },
 }
 
 RP_categories = {
@@ -267,7 +278,9 @@ for _, category in ipairs(RP_categories) do
     for _, setting in pairs(items) do
         setting["ui_description"] = "Whether or not to display " .. setting["ui_name"] .. " particles."
         setting["value_default"] = true
-        setting["scope"] = MOD_SETTING_SCOPE_RUNTIME_RESTART
+        if setting["scope"] == nil then
+            setting["scope"] = MOD_SETTING_SCOPE_RUNTIME_RESTART
+        end
     end
 end
 
@@ -304,11 +317,18 @@ end
 
 local function GuiOptionIcon( gui, element_id, image_file, hovered, box_height )
     -- Make image responsive to hover
-    local scale = hovered and 1.2 or 1
     local x_offset = 5
+    local _, img_height_unscaled = GuiGetImageDimensions( gui, image_file, 1 )
+
+    local scale = hovered and 1.2 or 1
+    if img_height_unscaled > box_height then
+        local max_scale = 1 / img_height_unscaled * box_height
+        local unhovered_scale = max_scale / 5 * 4
+        scale = hovered and max_scale or unhovered_scale
+        img_height_unscaled = GuiGetImageDimensions( gui, image_file, unhovered_scale)
+    end
 
     local img_width, img_height = GuiGetImageDimensions( gui, image_file, scale )
-    local _, img_height_unscaled = GuiGetImageDimensions( gui, image_file, 1 )
 
     local img_y_margin =  (box_height - img_height_unscaled) / 2
     local img_y_offset = (img_height - img_height_unscaled) / 2
@@ -343,7 +363,12 @@ local function CustomCheckboxGui(gui, element_id, any_global)
 
     local tooltip_text = disabled_next and "[ Click to enable ]" or "[ Click to disable ]"
     if disabled ~= disabled_next then
-        tooltip_text = tooltip_text .. "\n" .. GameTextGetTranslatedOrNot("$menu_modsettings_changes_restart")
+        local notify_text = GameTextGetTranslatedOrNot("$menu_modsettings_changes_restart")
+        if any_global["scope"] == MOD_SETTING_SCOPE_NEW_GAME then
+            notify_text = GameTextGetTranslatedOrNot("$menu_modsettings_changes_worldgen")
+        end
+
+        tooltip_text = tooltip_text .. "\n" .. notify_text
     end
 
     GuiTooltip(gui, any_global.ui_description, tooltip_text)
