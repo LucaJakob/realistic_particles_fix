@@ -226,6 +226,11 @@ RP_projectiles = {
         ui_name = "Giant Firebolt",
         sprite = "data/ui_gfx/gun_actions/grenade_tier_3.png",
     },
+    {
+        id = "bomb_holy_giga",
+        ui_name = "Giga Holy Bomb",
+        sprite = "data/ui_gfx/gun_actions/bomb_holy_giga.png",
+    },
 }
 
 -- INITIALIZE CURRENT PROPS
