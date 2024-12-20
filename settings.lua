@@ -330,23 +330,17 @@ end
 local function GuiOptionIcon( gui, element_id, image_file, hovered, box_height )
     -- Make image responsive to hover
     local x_offset = 5
-    local _, img_height_unscaled = GuiGetImageDimensions( gui, image_file, 1 )
 
-    local scale = hovered and 1.2 or 1
-    if img_height_unscaled > box_height then
-        local max_scale = 1 / img_height_unscaled * box_height
-        local unhovered_scale = max_scale / 5 * 4
-        scale = hovered and max_scale or unhovered_scale
-        img_height_unscaled = GuiGetImageDimensions( gui, image_file, unhovered_scale)
-    end
+    local fit_box_scale = 1 / select(2, GuiGetImageDimensions( gui, image_file, 1 )) * box_height
+    local unhovered_scale = fit_box_scale * 0.83
+    local scale = hovered and fit_box_scale or unhovered_scale
 
     local img_width, img_height = GuiGetImageDimensions( gui, image_file, scale )
 
-    local img_y_margin =  (box_height - img_height_unscaled) / 2
-    local img_y_offset = (img_height - img_height_unscaled) / 2
+    local img_y_offset = (box_height - img_height) / 2
 
     local img_x = x_offset - (img_width / 2)
-    local img_y = hovered and (img_y_margin - img_y_offset) or img_y_margin
+    local img_y = hovered and 0 or img_y_offset
 
     GuiImage(gui, element_id, img_x, img_y, image_file, 1, scale)
 end
