@@ -219,36 +219,48 @@ RP_props = {
         id = "physics_barrel_oil",
         ui_name = "Oil Barrel",
         sprite = "data/props_gfx/barrel_unstable.png",
+        scope = MOD_SETTING_SCOPE_NEW_GAME,
     },
     {
         id = "physics_barrel_radioactive",
         ui_name = "Toxic Barrel",
         sprite = "data/props_gfx/barrel_radioactive.png",
+        scope = MOD_SETTING_SCOPE_NEW_GAME,
     },
     {
         id = "physics_box_explosive",
         ui_name = "Explosive Box",
         sprite = "data/props_gfx/tnt.png",
-    },
-    {
-        id = "suspended_tank_radioactive",
-        ui_name = "Toxic Barrel (Suspended)",
-        sprite = "data/props_gfx/suspended_tank_radioactive.png",
+        scope = MOD_SETTING_SCOPE_NEW_GAME,
     },
     {
         id = "physics_propane_tank",
         ui_name = "Propane Tank",
-        sprite = "data/props_gfx/propane_tank.png"
+        sprite = "data/props_gfx/propane_tank.png",
+        scope = MOD_SETTING_SCOPE_NEW_GAME,
     },
     {
         id = "physics_crate",
         ui_name = "Explosive Crate",
-        sprite = "data/props_gfx/crate.png"
+        sprite = "data/props_gfx/crate.png",
+        scope = MOD_SETTING_SCOPE_NEW_GAME,
     },
     {
         id = "physics_fungus",
         ui_name = "Fungus",
         sprite = "data/props_gfx/physics_fungus_cap_03.png",
+        scope = MOD_SETTING_SCOPE_NEW_GAME,
+    },
+    {
+        id = "physics_seamine",
+        ui_name = "Seamine",
+        sprite = "data/props_gfx/seamine.png",
+        scope = MOD_SETTING_SCOPE_NEW_GAME,
+    },
+    {
+        id = "physics_pressure_tank",
+        ui_name = "Acid Barrel",
+        sprite = "data/props_gfx/pressure_tank.png",
         scope = MOD_SETTING_SCOPE_NEW_GAME,
     },
 }
