@@ -8,6 +8,7 @@ for content in nxml.edit_file("data/entities/projectiles/deck/death_cross_big.xm
         :set("sparks_count_max", "100") -- from "20"
     end
 
+    -- both are cosmetic
     local emitters = content:all_of("ParticleEmitterComponent")
     for i, emitter in pairs(emitters) do
         emitter:set("count_min", "25") -- from "5"        

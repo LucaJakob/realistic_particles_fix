@@ -8,17 +8,23 @@ for content in nxml.edit_file("data/entities/projectiles/deck/rocket_tier_2.xml"
         :set("sparks_count_max", "70") -- from "40"
     end
     
-    local emitters = content:all_of("ParticleEmitterComponent")
+    local smoke_real,
+    green_trail1,
+    green_trail2,
+    green_trail3,
+    green_trail4,
+    sparse_green = unpack(content:all_of("ParticleEmitterComponent"))
 
     -- Green Spark
-    if emitters[2] then
-        emitters[2]:set("lifetime_min", "2.3") -- from "0.3"
+    if green_trail1 then
+    green_trail1:set("lifetime_min", "2.3") -- from "0.3"
         :set("lifetime_max", "5.5") -- from "0.5"
         :set("airflow_force", "1.6") -- from "0.6"
     end
 
-    if emitters[3] then
-        emitters[3]:set("count_min", "15") -- from "1"
+    if green_trail2 then
+
+        green_trail2:set("count_min", "15") -- from "1"
         :set("count_max", "60") -- from "8"
         :set("airflow_force", "1.6") -- from "0.6"
     end

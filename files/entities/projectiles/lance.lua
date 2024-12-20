@@ -9,15 +9,12 @@ for content in nxml.edit_file("data/entities/projectiles/deck/lance.xml", ModTex
         :set("sparks_count_max", "22") -- from "15"
     end
     
-    local emitters = content:all_of("ParticleEmitterComponent")
-    for i, emitter in pairs(emitters) do
-        local material = emitter:get("emitted_material_name")
-        if material == "spark_blue" then
-            emitter:set("count_min", "55") -- from "1"
-            :set("count_max", "95") -- from "5"
-            :set("airflow_force", "2.5") -- from "0.1"
-            :set("airflow_time", "1.505") -- from "0.101"
-            :set("airflow_scale", "2.01") -- from "2.01"
-        end
+    local emitter = unpack(content:all_of("ParticleEmitterComponent"))
+    if emitter then
+        emitter:set("count_min", "55") -- from "1"
+        :set("count_max", "95") -- from "5"
+        :set("airflow_force", "2.5") -- from "0.1"
+        :set("airflow_time", "1.505") -- from "0.101"
+        :set("airflow_scale", "2.01") -- from "2.01"
     end
 end

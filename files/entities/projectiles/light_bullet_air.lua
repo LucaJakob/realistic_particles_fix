@@ -12,18 +12,18 @@ for content in nxml.edit_file("data/entities/projectiles/deck/light_bullet_air.x
         :set("material_sparks_max", "2") -- from "0"
     end
     
-    local emitters = content:all_of("ParticleEmitterComponent")
+    local white1, white2 = unpack(content:all_of("ParticleEmitterComponent"))
 
-    if emitters[1] then
-        emitters[1]:set("count_min", "3") -- from "3"
+    if white1 then
+        white1:set("count_min", "3") -- from "3"
         :set("count_max", "4") -- from "4"
         :set("lifetime_min", "2.2") -- from "0.2"
         :set("lifetime_max", "4.2") -- from "1.2"
         :set("airflow_force", "3.5") -- from "1.5"
     end
 
-    if emitters[2] then
-        emitters[2]:set("count_min", "5") -- from "1"
+    if white2 then
+        white2:set("count_min", "5") -- from "1"
         :set("count_max", "10") -- from "2"
         :set("lifetime_min", "2.2") -- from "1.2"
         :set("lifetime_max", "4.2") -- from "3.2"

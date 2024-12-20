@@ -8,13 +8,10 @@ for content in nxml.edit_file("data/entities/projectiles/bomb_small.xml", ModTex
         :set("sparks_count_max", "35") -- from "15"
     end
 
-    local emitters = content:all_of("ParticleEmitterComponent")
+    local smoke_emitter_real, spark_emitter, sparse_spark_emitter = unpack(content:all_of("ParticleEmitterComponent"))
 
-    for i, emitter in pairs(emitters) do
-        local material = emitter:get("emitted_material_name")
-        if material == "spark" then
-            emitter:set("lifetime_min", "3.1") -- from "0.1"
-            :set("lifetime_max", "4.3") -- from "0.3"
-        end
+    if spark_emitter then
+        spark_emitter:set("lifetime_min", "3.1") -- from "0.1"
+        :set("lifetime_max", "4.3") -- from "0.3"
     end
 end

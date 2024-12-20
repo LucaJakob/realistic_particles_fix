@@ -177,11 +177,6 @@ RP_projectiles = {
         sprite = "data/ui_gfx/gun_actions/spitter.png",
     },
     {
-        id = "spore_pod",
-        ui_name = "Spore Pod",
-        sprite = "data/ui_gfx/gun_actions/spore_pod.png",
-    },
-    {
         id = "tnt",
         ui_name = "Dynamite",
         sprite = "data/ui_gfx/gun_actions/dynamite.png",

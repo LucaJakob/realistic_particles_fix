@@ -9,35 +9,40 @@ for content in nxml.edit_file("data/entities/projectiles/deck/fireworks/firework
         :set("sparks_count_max", "45") -- from "20"
     end
     
-    local emitters = content:all_of("ParticleEmitterComponent")
+    local smoke_emitter_real,
+    trail_emitter1,
+    trail_emitter2,
+    trail_emitter3,
+    sparse_emitter = unpack(content:all_of("ParticleEmitterComponent"))
 
-    -- Smoke
-    if emitters[1] then
-        emitters[1]:set("count_min", "15") -- from "5"
-        :set("count_max", "25") -- from "5"
+    if smoke_emitter_real then
+        local emitter = smoke_emitter_real:clone()
+        emitter:set("create_real_particles", "0")
+        :set("emit_real_particles", "0")
+        :set("emit_cosmetic_particles", "1")
+        :set("count_min", "10") -- from "5"
+        :set("count_max", "20") -- from "5"
+        content:add_child(emitter)
     end
 
-    -- Plasma fading 1
-    if emitters[2] then
-        emitters[2]:set("count_min", "28") -- from "1"
+    if trail_emitter1 then
+        trail_emitter1:set("count_min", "28") -- from "1"
         :set("count_max", "48") -- from "8"
         :set("lifetime_min", "2.3") -- from "0.3"
         :set("lifetime_max", "5.5") -- from "0.5"
         :set("airflow_force", "2.6") -- from "0.6"
     end
 
-    -- Plasma fading 2
-    if emitters[3] then
-        emitters[3]:set("count_min", "28") -- from "1"
+    if trail_emitter2 then
+        trail_emitter2:set("count_min", "28") -- from "1"
         :set("count_max", "48") -- from "8"
         :set("lifetime_min", "4.3") -- from "0.3"
         :set("lifetime_max", "6.5") -- from "0.5"
         :set("airflow_force", "2.6") -- from "0.6"
     end
 
-    -- Plasma fading 2
-    if emitters[4] then
-        emitters[4]:set("count_min", "28") -- from "1"
+    if trail_emitter3 then
+        trail_emitter3:set("count_min", "28") -- from "1"
         :set("count_max", "48") -- from "8"
         :set("lifetime_min", "4.3") -- from "0.3"
         :set("lifetime_max", "6.5") -- from "0.5"
@@ -53,44 +58,48 @@ for content in nxml.edit_file("data/entities/projectiles/deck/fireworks/firework
         :set("sparks_count_max", "52") -- from "20"
     end
     
-    local emitters = content:all_of("ParticleEmitterComponent")
+    local smoke_emitter_real,
+    trail_emitter1,
+    trail_emitter2,
+    trail_emitter3,
+    sparse_emitter = unpack(content:all_of("ParticleEmitterComponent"))
 
-    -- Smoke
-    if emitters[1] then
-        emitters[1]:set("count_min", "25") -- from "5"
-        :set("count_max", "45") -- from "5"
+    if smoke_emitter_real then
+        local emitter = smoke_emitter_real:clone()
+        emitter:set("create_real_particles", "0")
+        :set("emit_real_particles", "0")
+        :set("emit_cosmetic_particles", "1")
+        :set("count_min", "25") -- from "5"
+        :set("count_max", "40") -- from "5"
+        content:add_child(emitter)
     end
 
-    -- Fading green 1
-    if emitters[2] then
-        emitters[2]:set("count_min", "28") -- from "1"
+    if trail_emitter1 then
+        trail_emitter1:set("count_min", "28") -- from "1"
         :set("count_max", "48") -- from "8"
         :set("lifetime_min", "4.3") -- from "0.3"
         :set("lifetime_max", "5.5") -- from "0.5"
         :set("airflow_force", "3.6") -- from "0.6"
     end
 
-    -- Fading green 2
-    if emitters[3] then
-        emitters[3]:set("count_min", "28") -- from "1"
+    if trail_emitter2 then
+        trail_emitter2:set("count_min", "28") -- from "1"
         :set("count_max", "48") -- from "8"
         :set("lifetime_min", "6.3") -- from "0.3"
         :set("lifetime_max", "8.5") -- from "0.5"
         :set("airflow_force", "3.6") -- from "0.6"
     end
 
-    -- Fading green 2
-    if emitters[4] then
-        emitters[4]:set("count_min", "28") -- from "1"
+    if trail_emitter3 then
+        trail_emitter3:set("count_min", "28") -- from "1"
         :set("count_max", "48") -- from "8"
         :set("lifetime_min", "4.3") -- from "0.3"
         :set("lifetime_max", "8.5") -- from "0.5"
         :set("airflow_force", "3.6") -- from "0.6"
     end
 
-    -- Sparse green
-    if emitters[5] then
-        emitters[5]:set("count_min", "28") -- from "1"
+    if sparse_emitter then
+        sparse_emitter:set("count_min", "28") -- from "1"
         :set("count_max", "48") -- from "1"
         :set("lifetime_min", "4.4") -- from "1.4"
         :set("lifetime_max", "8.5") -- from "1.5"
@@ -106,35 +115,40 @@ for content in nxml.edit_file("data/entities/projectiles/deck/fireworks/firework
         :set("sparks_count_max", "48") -- from "20"
     end
     
-    local emitters = content:all_of("ParticleEmitterComponent")
+    local smoke_emitter_real,
+    trail_emitter1,
+    trail_emitter2,
+    trail_emitter3,
+    sparse_emitter = unpack(content:all_of("ParticleEmitterComponent"))
 
-    -- Smoke
-    if emitters[1] then
-        emitters[1]:set("count_min", "25") -- from "5"
-        :set("count_max", "28") -- from "5"
+    if smoke_emitter_real then
+        local emitter = smoke_emitter_real:clone()
+        emitter:set("create_real_particles", "0")
+        :set("emit_real_particles", "0")
+        :set("emit_cosmetic_particles", "1")
+        :set("count_min", "20") -- from "5"
+        :set("count_max", "23") -- from "5"
+        content:add_child(emitter)
     end
 
-    -- Spark 1
-    if emitters[2] then
-        emitters[2]:set("count_min", "28") -- from "1"
+    if trail_emitter1 then
+        trail_emitter1:set("count_min", "28") -- from "1"
         :set("count_max", "48") -- from "8"
         :set("lifetime_min", "4.3") -- from "0.3"
         :set("lifetime_max", "6.5") -- from "0.5"
         :set("airflow_force", "3.6") -- from "0.6"
     end
 
-    -- Spark 2
-    if emitters[3] then
-        emitters[3]:set("count_min", "28") -- from "1"
+    if trail_emitter2 then
+        trail_emitter2:set("count_min", "28") -- from "1"
         :set("count_max", "48") -- from "8"
         :set("lifetime_min", "4.3") -- from "0.3"
         :set("lifetime_max", "6.5") -- from "0.5"
         :set("airflow_force", "3.6") -- from "0.6"
     end
 
-    -- Sparse spark
-    if emitters[4] then
-        emitters[4]:set("count_min", "18") -- from "1"
+    if trail_emitter3 then
+        trail_emitter3:set("count_min", "18") -- from "1"
         :set("count_max", "28") -- from "1"
         :set("lifetime_min", "3.4") -- from "1.4"
         :set("lifetime_max", "5.5") -- from "1.5"
@@ -150,44 +164,48 @@ for content in nxml.edit_file("data/entities/projectiles/deck/fireworks/firework
         :set("sparks_count_max", "28") -- from "20"
     end
     
-    local emitters = content:all_of("ParticleEmitterComponent")
+    local smoke_emitter_real,
+    trail_emitter1,
+    trail_emitter2,
+    trail_emitter3,
+    sparse_emitter = unpack(content:all_of("ParticleEmitterComponent"))
 
-    -- Smoke
-    if emitters[1] then
-        emitters[1]:set("count_min", "18") -- from "5"
-        :set("count_max", "28") -- from "5"
+    if smoke_emitter_real then
+        local emitter = smoke_emitter_real:clone()
+        emitter:set("create_real_particles", "0")
+        :set("emit_real_particles", "0")
+        :set("emit_cosmetic_particles", "1")
+        :set("count_min", "13") -- from "5"
+        :set("count_max", "23") -- from "5"
+        content:add_child(emitter)
     end
 
-    -- Fading Pink 1
-    if emitters[2] then
-        emitters[2]:set("count_min", "28") -- from "1"
+    if trail_emitter1 then
+        trail_emitter1:set("count_min", "28") -- from "1"
         :set("count_max", "48") -- from "8"
         :set("lifetime_min", "4.3") -- from "0.3"
         :set("lifetime_max", "6.5") -- from "0.5"
         :set("airflow_force", "3.6") -- from "0.6"
     end
 
-    -- Fading Pink 2 
-    if emitters[3] then
-        emitters[3]:set("count_min", "28") -- from "1"
+    if trail_emitter2 then
+        trail_emitter2:set("count_min", "28") -- from "1"
         :set("count_max", "48") -- from "8"
         :set("lifetime_min", "4.3") -- from "0.3"
         :set("lifetime_max", "6.5") -- from "0.5"
         :set("airflow_force", "3.6") -- from "0.6"
     end
 
-    -- Fading Pink 3
-    if emitters[4] then
-        emitters[4]:set("count_min", "28") -- from "1"
+    if trail_emitter3 then
+        trail_emitter3:set("count_min", "28") -- from "1"
         :set("count_max", "48") -- from "8"
         :set("lifetime_min", "3.3") -- from "0.3"
         :set("lifetime_max", "6.5") -- from "0.5"
         :set("airflow_force", "3.6") -- from "0.6"
     end
 
-    -- Sparse pink
-    if emitters[5] then
-        emitters[5]:set("count_min", "7") -- from "1"
+    if sparse_emitter then
+        sparse_emitter:set("count_min", "7") -- from "1"
         :set("count_max", "11") -- from "1"
         :set("lifetime_min", "2.4") -- from "1.4"
         :set("lifetime_max", "4.5") -- from "1.5"
