@@ -226,6 +226,11 @@ RP_projectiles = {
         ui_name = "Giga Holy Bomb",
         sprite = "data/ui_gfx/gun_actions/bomb_holy_giga.png",
     },
+    {
+        id = "mine",
+        ui_name = "Unstable Crystal",
+        sprite = "data/ui_gfx/gun_actions/mine.png",
+    },
 }
 
 -- INITIALIZE CURRENT PROPS
