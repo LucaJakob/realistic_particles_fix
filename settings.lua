@@ -236,6 +236,11 @@ RP_projectiles = {
         ui_name = "Eldritch Portal",
         sprite = "data/ui_gfx/gun_actions/tentacle_portal.png",
     },
+    {
+        id = "megalaser",
+        ui_name = "Intense Concentrated Light",
+        sprite = "data/ui_gfx/gun_actions/megalaser.png",
+    },
 }
 
 -- INITIALIZE CURRENT PROPS
