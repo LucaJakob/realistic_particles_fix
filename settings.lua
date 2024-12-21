@@ -231,6 +231,11 @@ RP_projectiles = {
         ui_name = "Unstable Crystal",
         sprite = "data/ui_gfx/gun_actions/mine.png",
     },
+    {
+        id = "tentacle_portal",
+        ui_name = "Eldritch Portal",
+        sprite = "data/ui_gfx/gun_actions/tentacle_portal.png",
+    },
 }
 
 -- INITIALIZE CURRENT PROPS
