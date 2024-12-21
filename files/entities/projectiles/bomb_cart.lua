@@ -22,13 +22,15 @@ for content in nxml.edit_file("data/entities/projectiles/bomb_cart.xml", ModText
         emitter:set("create_real_particles", "0")
         :set("emit_real_particles", "0")
         :set("emit_cosmetic_particles", "1")
-        :set("count_min", "11") -- from "1"
-        :set("count_max", "50") -- from "5"
-        :set("lifetime_min", "5.1") -- from "0.1"
-        :set("lifetime_max", "13.3") -- from "0.3"
+        :set("count_min", "2") -- from "1"
+        :set("count_max", "4") -- from "5"
+        :set("lifetime_min", "0.8") -- from "0.1"
+        :set("lifetime_max", "1.5") -- from "0.3"
         :set("airflow_force", "2.5") -- from unset
         :set("airflow_time", "1.0") -- from unset
         :set("airflow_scale", "0.05") -- from unset
+        :set("fade_based_on_lifetime", "1")
+        :set("gravity.y", "-5")
         content:add_child(emitter)
     end
     if spark_emitter then

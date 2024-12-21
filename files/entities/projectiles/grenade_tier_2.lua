@@ -21,7 +21,9 @@ for content in nxml.edit_file("data/entities/projectiles/deck/grenade_tier_2.xml
         :set("airflow_time", "0.5")
         :set("airflow_scale", "0.1")
         :set("fade_based_on_lifetime", "1")
-
+        :set("fade_based_on_lifetime", "1")
+        :set("gravity.y", "-5")
+        
         content:add_child(cosmetic_fire)
     end
 

@@ -22,6 +22,8 @@ for content in nxml.edit_file("data/entities/projectiles/deck/fireworks/firework
         :set("emit_cosmetic_particles", "1")
         :set("count_min", "10") -- from "5"
         :set("count_max", "20") -- from "5"
+        :set("fade_based_on_lifetime", "1")
+        :set("gravity.y", "-5")
         content:add_child(emitter)
     end
 
@@ -71,6 +73,8 @@ for content in nxml.edit_file("data/entities/projectiles/deck/fireworks/firework
         :set("emit_cosmetic_particles", "1")
         :set("count_min", "25") -- from "5"
         :set("count_max", "40") -- from "5"
+        :set("fade_based_on_lifetime", "1")
+        :set("gravity.y", "-5")
         content:add_child(emitter)
     end
 
@@ -128,6 +132,8 @@ for content in nxml.edit_file("data/entities/projectiles/deck/fireworks/firework
         :set("emit_cosmetic_particles", "1")
         :set("count_min", "20") -- from "5"
         :set("count_max", "23") -- from "5"
+        :set("fade_based_on_lifetime", "1")
+        :set("gravity.y", "-5")
         content:add_child(emitter)
     end
 
@@ -177,6 +183,8 @@ for content in nxml.edit_file("data/entities/projectiles/deck/fireworks/firework
         :set("emit_cosmetic_particles", "1")
         :set("count_min", "13") -- from "5"
         :set("count_max", "23") -- from "5"
+        :set("fade_based_on_lifetime", "1")
+        :set("gravity.y", "-5")
         content:add_child(emitter)
     end
 

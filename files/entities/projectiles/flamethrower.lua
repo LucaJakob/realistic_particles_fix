@@ -49,6 +49,8 @@ for content in nxml.edit_file("data/entities/projectiles/flamethrower.xml", ModT
         :set("emit_cosmetic_particles", "1")
         :set("count_min", "4") -- from "2"
         :set("count_max", "5") -- from "3"
+        :set("fade_based_on_lifetime", "1")
+        :set("gravity.y", "-5")
         content:add_child(emitter)
     end
 

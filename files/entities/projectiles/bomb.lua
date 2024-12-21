@@ -18,11 +18,14 @@ for content in nxml.edit_file("data/entities/projectiles/bomb.xml", ModTextFileG
     end
 
     if spark_emitter then
-        spark_emitter:set("count_max", "11") -- from "2"
-        :set("lifetime_min", "0.9") -- from "0.1"
-        :set("lifetime_max", "1.6") -- from "0.3"
-        :set("is_trail", "1")
+        spark_emitter:set("create_real_particles", "0")
+        :set("emit_real_particles", "0")
         :set("emit_cosmetic_particles", "1")
+        :set("lifetime_min", "0.5") -- from "0.1"
+        :set("lifetime_max", "0.9") -- from "0.3"
+        :set("is_trail", "1")
+        :set("fade_based_on_lifetime", "1")
+        :set("gravity.y", "-5")
     end
 
     if sparse_spark_emitter then

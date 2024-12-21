@@ -17,18 +17,6 @@ for content in nxml.edit_file("data/entities/projectiles/deck/rocket.xml", ModTe
     spark_trail3,
     sparse_spark = unpack(content:all_of("ParticleEmitterComponent"))
 
-    if smoke_real then
-        local emitter = smoke_real:clone()
-        emitter:set("create_real_particles", "0")
-        :set("emit_real_particles", "0")
-        :set("emit_cosmetic_particles", "1")
-        :set("count_min", "40") -- from "5"
-        :set("count_max", "70") -- from "5"
-        :set("lifetime_min", "7.1") -- from "0.1"
-        :set("lifetime_max", "9.3") -- from "0.3"
-        content:add_child(emitter)
-    end
-
     if spark_trail1 then
         spark_trail1:set("lifetime_min", "14.3") -- from "0.3"
         :set("lifetime_max", "15.5") -- from "0.5"

@@ -22,7 +22,8 @@ for content in nxml.edit_file("data/entities/projectiles/deck/grenade.xml", ModT
         :set("airflow_time", "0.5")
         :set("airflow_scale", "0.1")
         :set("fade_based_on_lifetime", "1")
-
+        :set("fade_based_on_lifetime", "1")
+        :set("gravity.y", "-5")
         content:add_child(cosmetic_fire)
     end
 
@@ -39,18 +40,20 @@ for content in nxml.edit_file("data/entities/projectiles/deck/grenade.xml", ModT
     -- smoke_emitter is real
     if smoke_emitter then
         local emitter = smoke_emitter:clone()
-        emitter:set("is_trail", "1"):set("trail_gap", "0.5"):set("lifetime_min", "1.5")
+        emitter:set("is_trail", "1")
+        :set("trail_gap", "0.5")
+        :set("lifetime_min", "1.5")
         :set("lifetime_max", "0.5")
         :set("airflow_force", "1.0")
         :set("airflow_time", "1.0")
-        :set("fade_based_on_lifetime", "1")
         :set("airflow_scale", "0.1")
         :set("emit_real_particles", "0")
         :set("create_real_particles", "0")
         :set("emit_cosmetic_particles", "1")
-        :set("gravity.y", "0.1")
         :set("count_min", "1")
         :set("count_max", "1")
+        :set("fade_based_on_lifetime", "1")
+        :set("gravity.y", "-5")
         content:add_child(emitter)
     end
 end

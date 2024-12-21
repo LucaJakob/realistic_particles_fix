@@ -11,17 +11,7 @@ for content in nxml.edit_file("data/entities/projectiles/deck/fireball.xml", Mod
     end
 
     local smoke_emitter_real, spark_emitter, fire_emitter_real = unpack(content:all_of("ParticleEmitterComponent"))
-
-    if smoke_emitter_real then
-        local emitter = smoke_emitter_real:clone()
-        emitter:set("create_real_particles", "0")
-        :set("emit_real_particles", "0")
-        :set("emit_cosmetic_particles", "1")
-        :set("airflow_force", "1.5") -- from unset
-        :set("airflow_time", "1.0") -- from unset
-        :set("airflow_scale", "0.05") -- from unset
-        content:add_child(emitter)
-    end
+    
     if spark_emitter then
         spark_emitter:set("count_min", "8") -- from "1"
         :set("count_max", "13") -- from "3"
