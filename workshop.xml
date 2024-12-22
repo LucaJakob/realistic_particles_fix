@@ -1,38 +1,39 @@
 <Mod
     name="Realistic Particles Fix"
-    description="This mod is a continuation of the Noita Realistic Particles Behaviour mod.
-It has been fully rewritten to avoid gameplay changes and to keep it as a purely graphical mod.
-You can check out the original here: https://steamcommunity.com/sharedfiles/filedetails/?id=2584468574
+    description="[h1]This mod does not require the original mod to work.[/h1]
+[url=steamcommunity.com/sharedfiles/filedetails/changelog/3386002831]Changelog[/url]
+[url=github.com/LucaJakob/realistic_particles_fix/]Source code[/url]
 
+This mod is a continuation of the [b]Noita Realistic Particles Behaviour[/b] mod.
+It has been fully rewritten to avoid gameplay changes and to keep it as a purely graphical mod.
+You can check out the original [url=steamcommunity.com/sharedfiles/filedetails/?id=2584468574]here[/url].
 
 Projectiles are now edited instead of replaced. This ensures that future updates of Noita or other mods can freely change projectile damage and other attributes, as long as they still emit the particles.
 
-This mod does not require the original mod to work.
+[h2]Notable changes[/h2]
+[list]
+[*] Many projectiles now deal their most up-to-date damage
+[*] The spread of projectiles is now back in sync with Noita
+[*] Dynamite is no longer unusually heavy
+[*] Dynamite now no longer lingers around too long
+[*] Bombs are no longer unusually light
+[*] Friendly fire projectiles are now in sync with Noita
+[*] Projectile count has been reduced in a few places to avoid bright white glares
+[/list]
 
-Notable changes:
-- Many projectiles now deal their most up-to-date damage
-- The spread of projectiles is now back in sync with Noita
-- Dynamite is no longer unusually heavy
-- Dynamite now no longer lingers around too long
-- Bombs are no longer unusually light
-- Friendly fire projectiles are now in sync with Noita
-- Projectile count has been reduced in a few places to avoid bright white glares
-
-Check the changelog for the full list!
-Source code: https://github.com/LucaJakob/realistic_particles_fix/
 
 If you do not like a specific particle change, you can disable that projectile/prop in the Mod Settings.
 
-Q&A:
+[h1]Q&A[/h1]
 
-Q: Will this mod count as cheating?
-A: This mod only edits visual parameters of projectiles. It no longer has an effect on gameplay.
+[h3]Will this mod count as cheating?[/h3]
+This mod only edits visual parameters of projectiles. It no longer has an effect on gameplay.
 
-Q: Will this mod work with other mods?
-A: This mod was rewritten to be as compatible as possible. If you encounter errors when using it with other mods, let me know so I can fix it!
+[h3]Will this mod work with other mods?[/h3]
+This mod was rewritten to be as compatible as possible. If you encounter errors when using it with other mods, let me know so I can fix it!
 
-Q: Will you update this mod in the future?
-A: The previous workshop submission hasn't been updated in over a year. While I cannot guarantee that new projectiles will be added onto this mod, I will try to fix any issues you may encounter."
+[h3]Will you update this mod in the future?[/h3]
+The previous workshop submission hasn't been updated in over a year. While I cannot guarantee that new projectiles will be added onto this mod, I will try to fix any issues you may encounter."
     tags="graphics"
     dont_upload_folders="source_data"
     dont_upload_files="Changelog.md"
