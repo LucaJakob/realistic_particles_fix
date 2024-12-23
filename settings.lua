@@ -362,6 +362,11 @@ RP_enemies = {
         ui_name = "Happonuljaska",
         sprite = "data/ui_gfx/animal_icons/acidshooter.png",
     },
+    {
+        id = "playerghost",
+        ui_name = "Kummitus",
+        sprite = "data/ui_gfx/animal_icons/playerghost.png",
+    },
 }
 
 RP_categories = {
