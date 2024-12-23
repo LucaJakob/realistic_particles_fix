@@ -4,6 +4,61 @@ dofile("data/scripts/lib/mod_settings.lua") -- see this file for documentation o
 mod_id = "realistic_particles_fix"
 local mod_settings_version = 1
 
+-- INITIALIZE UTILITY FUNCTIONS
+
+function ToSettingId(any_global)
+    return mod_id .. "." .. "particles_" .. any_global.id .. "_off"
+end
+
+function DoSpoiler(any_global, ignore_state)
+    -- Value may be unset
+    if ignore_state ~= true and any_global["_no_spoiler"] == true then
+        return false
+    end
+    local flag = any_global["persistent_flag"]
+    return flag ~= nil and (not HasFlagPersistent(flag))
+end
+
+function ParseSetting(any_setting, reset_state)
+    local mod_setting_id = ToSettingId(any_setting)
+    local disabled = ModSettingGet(mod_setting_id)
+    local disabled_next = ModSettingGetNextValue(mod_setting_id)
+
+    local do_spoiler = DoSpoiler(any_setting, reset_state)
+
+    local text = any_setting["ui_name"]
+    local tooltip_text = "Whether or not to display " .. text .. " particles."
+    local tooltip_bottom = disabled_next and "[ Click to enable ]" or "[ Click to disable ]"
+    local image_file = any_setting.sprite or "data/ui_gfx/gun_actions/unidentified.png"
+
+    if do_spoiler then
+        image_file = "data/ui_gfx/gun_actions/unidentified.png"
+        text = "?????"
+        tooltip_text = "You have not unlocked this secret yet!"
+        tooltip_bottom = "[ CLICK TO REVEAL SPOILER ]"
+    end
+
+    if disabled ~= disabled_next then
+        local key = "$menu_modsettings_changes_restart"
+        if any_setting["scope"] == MOD_SETTING_SCOPE_NEW_GAME then
+            key = "$menu_modsettings_changes_worldgen"
+        end
+
+        tooltip_bottom = tooltip_bottom .. "\n" .. GameTextGetTranslatedOrNot(key)
+    end
+
+    return {
+        do_spoiler = do_spoiler,
+        setting_id = mod_setting_id,
+        text = text,
+        tooltip = tooltip_text,
+        tooltip_description = tooltip_bottom,
+        sprite = image_file,
+        disabled = disabled,
+        disabled_next = disabled_next
+    }
+end
+
 -- INITIALIZE CURRENT PROJECTILES
 RP_projectiles = {
     {
@@ -295,21 +350,37 @@ RP_props = {
     },
 }
 
+RP_enemies = {
+    {
+        id = "bossdragon",
+        ui_name = "Suomuhauki (Dragon Boss)",
+        sprite = "data/ui_gfx/animal_icons/boss_dragon.png",
+        persistent_flag = "miniboss_dragon"
+    }
+}
+
 RP_categories = {
     {
-        ui_name = "----- Projectiles -----",
+        ui_name = "----- Projectiles",
         ui_description = "Manage particles related to projectiles",
         folder_path = "mods/" .. mod_id .. "/files/entities/projectiles/",
         items = RP_projectiles,
         _folded = true,
     },
     {
-        ui_name = "----- Physics Objects -----",
+        ui_name = "----- Physics Objects",
         ui_description = "Manage particles related to physics objects",
         folder_path = "mods/" .. mod_id .. "/files/entities/props/",
         items = RP_props,
         _folded = true,
     },
+    {
+        ui_name = "----- Enemies",
+        ui_description = "Manage particles related to enemies",
+        folder_path = "mods/" .. mod_id .. "/files/enemies/",
+        items = RP_enemies,
+        _folded = true,
+    }
 }
 
 for _, category in ipairs(RP_categories) do
@@ -318,7 +389,7 @@ for _, category in ipairs(RP_categories) do
         return a["ui_name"] < b["ui_name"]
     end)
     for _, setting in pairs(items) do
-        setting["ui_description"] = "Whether or not to display " .. setting["ui_name"] .. " particles."
+        setting["_no_spoiler"] = not DoSpoiler(setting, true)
         setting["value_default"] = true
         if setting["scope"] == nil then
             setting["scope"] = MOD_SETTING_SCOPE_RUNTIME_RESTART
@@ -326,15 +397,12 @@ for _, category in ipairs(RP_categories) do
     end
 end
 
--- INITIALIZE UTILITY FUNCTIONS
 
-function ToSettingId(any_global)
-    return mod_id .. "." .. "particles_" .. any_global.id .. "_off"
-end
 
 --- INITIALIZE SETTINGS
 
 function ModSettingsUpdate(init_scope)
+
     -- set settings to new value if the update scope is correct
     for _, category in ipairs(RP_categories) do
         for _, item in ipairs(category["items"]) do
@@ -375,13 +443,12 @@ local function GuiOptionIcon( gui, element_id, image_file, hovered, box_height )
     GuiImage(gui, element_id, img_x, img_y, image_file, 1, scale)
 end
 
-local function CustomCheckboxGui(gui, element_id, any_global)
-    local image_file = any_global.sprite or "data/ui_gfx/gun_actions/unidentified.png"
-    local text_len, text_height = GuiGetTextDimensions(gui, any_global.ui_name)
 
-    local mod_setting_id = ToSettingId(any_global)
-    local disabled = ModSettingGet(mod_setting_id)
-    local disabled_next = ModSettingGetNextValue(mod_setting_id)
+
+local function CustomCheckboxGui(gui, element_id, any_global)
+    local data = ParseSetting(any_global)
+
+    local text_len, text_height = GuiGetTextDimensions(gui, data.text)
 
     GuiOptionsAdd(gui, GUI_OPTION.Layout_NextSameLine)
     GuiText(gui, 0, 0, "")
@@ -397,31 +464,25 @@ local function CustomCheckboxGui(gui, element_id, any_global)
 
     local clicked, _, hovered = GuiGetPreviousWidgetInfo(gui)
 
-    local tooltip_text = disabled_next and "[ Click to enable ]" or "[ Click to disable ]"
-    if disabled ~= disabled_next then
-        local notify_text = GameTextGetTranslatedOrNot("$menu_modsettings_changes_restart")
-        if any_global["scope"] == MOD_SETTING_SCOPE_NEW_GAME then
-            notify_text = GameTextGetTranslatedOrNot("$menu_modsettings_changes_worldgen")
-        end
+    GuiTooltip(gui, data.tooltip, data.tooltip_description)
+    GuiOptionIcon( gui, element_id, data.sprite, hovered, nine_piece_height )
 
-        tooltip_text = tooltip_text .. "\n" .. notify_text
-    end
-
-    GuiTooltip(gui, any_global.ui_description, tooltip_text)
-    GuiOptionIcon( gui, element_id, image_file, hovered, nine_piece_height )
-    --- Text
-    if disabled_next then
+    if data.disabled_next then
         GuiColorSetForNextWidget(gui, 0.6, 0.6, 0.6, 1)
     elseif hovered then
         GuiColorSetForNextWidget(gui, 1, 1, 0.7, 1)
     end
-    GuiText(gui, text_x, text_y, any_global.ui_name)
+    GuiText(gui, text_x, text_y, data.text)
 
     GuiOptionsRemove(gui, GUI_OPTION.Layout_NextSameLine)
     GuiText(gui, 0, 5, " ")
 
     if clicked then
-        ModSettingSetNextValue(mod_setting_id, not disabled_next, false)
+        if data.do_spoiler then
+            any_global["_no_spoiler"] = true
+        else
+            ModSettingSetNextValue(data.setting_id, not data.disabled_next, false)
+        end
     end
 end
 
@@ -465,8 +526,8 @@ function ModSettingsGui(gui, in_main_menu)
             GuiText(gui, 0, 0, " ")
             GuiToggleAllButtons(gui, id(), id(), items)
 
-            for _, spell in ipairs(items) do
-                CustomCheckboxGui(gui, id(), spell)
+            for _, item in ipairs(items) do
+                CustomCheckboxGui(gui, id(), item)
             end
 
             GuiAnimateEnd(gui)
