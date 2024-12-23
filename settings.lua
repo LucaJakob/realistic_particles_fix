@@ -356,7 +356,12 @@ RP_enemies = {
         ui_name = "Suomuhauki (Dragon Boss)",
         sprite = "data/ui_gfx/animal_icons/boss_dragon.png",
         persistent_flag = "miniboss_dragon"
-    }
+    },
+    {
+        id = "acidshooter",
+        ui_name = "Happonuljaska",
+        sprite = "data/ui_gfx/animal_icons/acidshooter.png",
+    },
 }
 
 RP_categories = {
