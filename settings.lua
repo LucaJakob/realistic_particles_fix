@@ -367,6 +367,16 @@ RP_enemies = {
         ui_name = "Kummitus",
         sprite = "data/ui_gfx/animal_icons/playerghost.png",
     },
+    {
+        id = "flamer",
+        ui_name = "Liekkari",
+        sprite = "data/ui_gfx/animal_icons/flamer.png",
+    },
+    {
+        id = "giantshooter",
+        ui_name = "Äitinuljaska",
+        sprite = "data/ui_gfx/animal_icons/giantshooter.png",
+    },
 }
 
 RP_categories = {
