@@ -24,6 +24,9 @@ for content in nxml.edit_file("data/entities/projectiles/deck/flamethrower.xml",
 
     if fire_trail_emitter then
         local emitter = fire_trail_emitter:clone()
+        :set("create_real_particles", "0")
+        :set("emit_real_particles", "0")
+        :set("emit_cosmetic_particles", "1")
         :set("count_min", "20") -- from "1"
         :set("count_max", "30") -- from "1"
         :set("lifetime_min", "5.3") -- from "0.3"
