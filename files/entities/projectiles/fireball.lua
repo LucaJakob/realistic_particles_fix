@@ -6,7 +6,6 @@ for content in nxml.edit_file("data/entities/projectiles/deck/fireball.xml", Mod
     if explosion then
         explosion:set("sparks_count_min", "100") -- from "50"
         :set("sparks_count_max", "300") -- from "100"
-        :set("create_real_particles", "1")
         -- :set("load_this_entity", "data/entities/particles/particle_explosion/main_contained.xml") -- from main_gunpowder_small.xml
     end
 

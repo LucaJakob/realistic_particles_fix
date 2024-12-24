@@ -407,6 +407,11 @@ RP_enemies = {
         ui_name = "Hornantappurahiisi",
         sprite = "data/ui_gfx/animal_icons/miner_hell.png",
     },
+    {
+        id = "firemage_weak",
+        ui_name = "Stendari",
+        sprite = "data/ui_gfx/animal_icons/firemage_weak.png",
+    },
 }
 
 RP_categories = {
