@@ -3,6 +3,7 @@ dofile("data/scripts/lib/mod_settings.lua") -- see this file for documentation o
 
 mod_id = "realistic_particles_fix"
 local mod_settings_version = 1
+RPF_icon_timer = 0
 
 -- INITIALIZE UTILITY FUNCTIONS
 
@@ -19,7 +20,7 @@ function DoSpoiler(any_global, ignore_state)
     return flag ~= nil and (not HasFlagPersistent(flag))
 end
 
-function ParseSetting(any_setting, reset_state)
+function ParseSetting(any_setting, reset_state, show_next_icon)
     local mod_setting_id = ToSettingId(any_setting)
     local disabled = ModSettingGet(mod_setting_id)
     local disabled_next = ModSettingGetNextValue(mod_setting_id)
@@ -29,7 +30,22 @@ function ParseSetting(any_setting, reset_state)
     local text = any_setting["ui_name"]
     local tooltip_text = "Whether or not to display " .. text .. " particles."
     local tooltip_bottom = disabled_next and "[ Click to enable ]" or "[ Click to disable ]"
-    local image_file = any_setting.sprite or "data/ui_gfx/gun_actions/unidentified.png"
+    local image_file = "data/ui_gfx/gun_actions/unidentified.png"
+
+    if type(any_setting.sprite) == "string" then
+        image_file = any_setting.sprite
+    elseif type(any_setting.sprite) == "table" then
+        local i = any_setting._icon_index or 1
+        if show_next_icon then
+            i = i + 1
+        end
+        if i > #any_setting.sprite then
+            i = 1
+        end
+
+        image_file = any_setting.sprite[i]
+        any_setting._icon_index = i
+    end
 
     if do_spoiler then
         image_file = "data/ui_gfx/gun_actions/unidentified.png"
@@ -355,7 +371,10 @@ RP_enemies = {
     {
         id = "acidshooter",
         ui_name = "Happonuljaska",
-        sprite = "data/ui_gfx/animal_icons/acidshooter.png",
+        sprite = {
+            "data/ui_gfx/animal_icons/acidshooter.png",
+            "data/ui_gfx/animal_icons/acidshooter_weak.png",
+        },
     },
     {
         id = "playerghost",
@@ -370,7 +389,23 @@ RP_enemies = {
     {
         id = "giantshooter",
         ui_name = "Äitinuljaska",
-        sprite = "data/ui_gfx/animal_icons/giantshooter.png",
+        sprite = {
+            "data/ui_gfx/animal_icons/giantshooter.png",
+            "data/ui_gfx/animal_icons/giantshooter_weak.png",
+        },
+    },
+    {
+        id = "miner",
+        ui_name = "Tappurahiisi",
+        sprite = {
+            "data/ui_gfx/animal_icons/miner_weak.png",
+            "data/ui_gfx/animal_icons/miner.png",
+        },
+    },
+    {
+        id = "miner_hell",
+        ui_name = "Hornantappurahiisi",
+        sprite = "data/ui_gfx/animal_icons/miner_hell.png",
     },
 }
 
@@ -460,8 +495,8 @@ end
 
 
 
-local function CustomCheckboxGui(gui, element_id, any_global)
-    local data = ParseSetting(any_global)
+local function CustomCheckboxGui(gui, element_id, any_global, show_next_icon)
+    local data = ParseSetting(any_global, false, show_next_icon)
 
     local text_len, text_height = GuiGetTextDimensions(gui, data.text)
 
@@ -521,16 +556,25 @@ function GuiToggleAllButtons(gui, id_enable_all, id_disable_all, enumerable)
 end
 
 function ModSettingsGui(gui, in_main_menu)
+    local _id = 3386002831 -- == workshop id
     -- These are global variables, despite the warning
     screen_width, screen_height = GuiGetScreenDimensions(gui)
 
-    local _id = 3386002831 -- == workshop id
+    RPF_icon_timer = RPF_icon_timer + 1
+    
+    local show_next_icon = false
+    -- = 2 seconds
+    if RPF_icon_timer >= 120 then
+        RPF_icon_timer = 0
+        show_next_icon = true
+    end
+
     local function id()
         _id = _id + 1
         return _id
     end
 
-    for i, category in ipairs(RP_categories) do
+    for _, category in ipairs(RP_categories) do
         local clicked_category_heading = mod_setting_category_button(mod_id, gui, id(), id(), category)
         if not category._folded then
             local items = category["items"]
@@ -542,11 +586,12 @@ function ModSettingsGui(gui, in_main_menu)
             GuiToggleAllButtons(gui, id(), id(), items)
 
             for _, item in ipairs(items) do
-                CustomCheckboxGui(gui, id(), item)
+                CustomCheckboxGui(gui, id(), item, show_next_icon)
             end
-
             GuiAnimateEnd(gui)
             GuiLayoutAddVerticalSpacing(gui, 4)
         end
     end
+
+    show_next_icon = false
 end
