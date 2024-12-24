@@ -157,11 +157,6 @@ RP_projectiles = {
         sprite = "data/ui_gfx/gun_actions/glowing_bolt.png",
     },
     {
-        id = "healshot",
-        ui_name = "Healing Bolt",
-        sprite = "data/ui_gfx/gun_actions/heal_bullet.png",
-    },
-    {
         id = "iceball",
         ui_name = "Iceball",
         sprite = "data/ui_gfx/gun_actions/iceball.png",
