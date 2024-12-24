@@ -10,13 +10,6 @@ for content in nxml.edit_file("data/entities/projectiles/bomb.xml", ModTextFileG
 
     local smoke_emitter_real, spark_emitter, sparse_spark_emitter = unpack(content:all_of("ParticleEmitterComponent"))
 
-    if smoke_emitter_real then
-        local emitter = smoke_emitter_real:clone()
-        emitter:set("count_min", "10") -- from "0"
-        :set("count_max", "56") -- from "4"
-        content:add_child(emitter)
-    end
-
     if spark_emitter then
         spark_emitter:set("create_real_particles", "0")
         :set("emit_real_particles", "0")
