@@ -423,6 +423,19 @@ RP_enemies = {
         ui_name = "Pakkasukko",
         sprite = "data/ui_gfx/animal_icons/icemage.png",
     },
+    {
+        id = "scavenger_leader",
+        ui_name = "Toimari",
+        sprite = "data/ui_gfx/animal_icons/scavenger_leader.png",
+    },
+    {
+        id = "scavenger_grenade",
+        ui_name = "Isohiisi & Kranuhiisi",
+        sprite = {
+            "data/ui_gfx/animal_icons/scavenger_clusterbomb.png",
+            "data/ui_gfx/animal_icons/scavenger_grenade.png"
+        },
+    },
 }
 
 RP_categories = {
