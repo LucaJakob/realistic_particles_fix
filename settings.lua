@@ -432,6 +432,11 @@ RP_enemies = {
         sprite = "data/ui_gfx/animal_icons/scavenger_leader.png",
     },
     {
+        id = "scavenger_mine",
+        ui_name = "Miinankylväjä",
+        sprite = "data/ui_gfx/animal_icons/scavenger_mine.png",
+    },
+    {
         id = "scavenger_grenade",
         ui_name = "Isohiisi & Kranuhiisi",
         sprite = {
