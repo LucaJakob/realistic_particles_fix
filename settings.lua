@@ -361,6 +361,7 @@ RP_props = {
     },
 }
 
+-- INITIALIZE CURRENT ENEMIES
 RP_enemies = {
     {
         id = "bossdragon",
@@ -411,6 +412,16 @@ RP_enemies = {
         id = "firemage_weak",
         ui_name = "Stendari",
         sprite = "data/ui_gfx/animal_icons/firemage_weak.png",
+    },
+    {
+        id = "firemage",
+        ui_name = "Eldari",
+        sprite = "data/ui_gfx/animal_icons/firemage.png",
+    },
+    {
+        id = "icemage",
+        ui_name = "Pakkasukko",
+        sprite = "data/ui_gfx/animal_icons/icemage.png",
     },
 }
 
