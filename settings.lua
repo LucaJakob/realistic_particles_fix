@@ -344,7 +344,10 @@ RP_props = {
     {
         id = "physics_fungus",
         ui_name = "Fungus",
-        sprite = "data/props_gfx/physics_fungus_cap_03.png",
+        sprite = {
+            "data/props_gfx/physics_fungus_cap_03.png",
+            "data/props_gfx/physics_fungus_acid_cap_03.png"
+        },
         scope = MOD_SETTING_SCOPE_NEW_GAME,
     },
     {
